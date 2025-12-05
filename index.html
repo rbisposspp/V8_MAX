@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Apoio Diário v12 - Aba Aprender Gemini</title> <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="tabs-container">
+        <button class="tab-button active" onclick="openTab(event, 'tab-checkin')">✓ Check-in</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-tools')">⚙️ Ferramentas</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-strategies')">🛡️ Estratégias</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-learn-autism')">🧩 Autismo</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-learn-topics')">🧠 Tópicos</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-learn-social')">👥 Social</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-gemini-learning')">🚀 Aprender Gemini</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-pda-quiz')">❓ PDA</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-had-quiz')">📊 HAD</button>
+        <button class="tab-button" onclick="openTab(event, 'tab-inspiration')">💡 Inspiração</button>
+    </div>
+
+    <div id="tab-checkin" class="tab-content active">
+        <header>
+            <h1>Meu Apoio Diário</h1>
+            <p style="text-align: center; font-size:0.9em;">Check-in de Autoconsciência (v. Super Leve)</p>
+            <p style="text-align: center; font-size: 0.85em; color: var(--text-medium); margin-top: 5px; padding: 0 10px;">
+                Use este check-in para entender seu estado atual e notar mudanças em relação ao seu "normal" (#KnowYourNormal).
+            </p>
+        </header>
+        <section id="check-in">
+            <h2>⚡ Como estou agora?</h2>
+            <div>
+                <div class="question-block" style="border-left: 3px solid var(--danger-color);">
+                    <label class="block-label" style="color: var(--danger-color);">Zona de Regulação Atual</label>
+                    <p style="font-size: 0.85em; color: var(--text-light); margin-bottom: 8px;">Indicador chave:</p>
+                    <div>
+                        <button onclick="selectButton(this)" data-group="regulation-zone" data-value="calma" class="option-button">Calma</button>
+                        <button onclick="selectButton(this)" data-group="regulation-zone" data-value="alerta" class="option-button selected">Alerta</button>
+                        <button onclick="selectButton(this)" data-group="regulation-zone" data-value="agitada" class="option-button">Agitada</button>
+                        <button onclick="selectButton(this)" data-group="regulation-zone" data-value="sobrecarga" class="option-button">Sobrecarga</button>
+                    </div>
+                    <input type="hidden" id="regulation-zone" value="alerta">
+                </div>
+
+                <div class="question-block">
+                    <label class="block-label">Ambiente Sensorial</label>
+                    <div style="margin-bottom: 10px;">
+                        <label for="light-level" class="input-label">Luz (1=Ok, 5=Incômoda): <span class="range-value-display">1</span></label>
+                        <input type="range" id="light-level" min="1" max="5" value="1">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="sound-level" class="input-label">Sons (1=Ok, 5=Incômodos): <span class="range-value-display">1</span></label>
+                        <input type="range" id="sound-level" min="1" max="5" value="1">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="texture-notice" class="input-label">Textura incômoda?</label>
+                        <input type="text" id="texture-notice" placeholder="Ex: Roupa, objeto...">
+                    </div>
+                    <div>
+                        <label for="smell-notice" class="input-label">Cheiro incômodo?</label>
+                        <input type="text" id="smell-notice" placeholder="Ex: Perfume, comida...">
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="block-label">Estado Interno</label>
+                    <div style="margin-bottom: 10px;">
+                        <label for="energy-level" class="input-label">Energia Física (1=Baixa, 5=Alta): <span class="range-value-display">3</span></label>
+                        <input type="range" id="energy-level" min="1" max="5" value="3">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="focus-clarity" class="input-label">Concentração (1=Difícil, 5=Fácil): <span class="range-value-display">3</span></label>
+                        <input type="range" id="focus-clarity" min="1" max="5" value="3">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Ritmo Pensamentos:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="thought-pace" data-value="lento" class="option-button">Lento</button>
+                            <button onclick="selectButton(this)" data-group="thought-pace" data-value="normal" class="option-button selected">Normal</button>
+                            <button onclick="selectButton(this)" data-group="thought-pace" data-value="rapido" class="option-button">Rápido</button>
+                            <button onclick="selectButton(this)" data-group="thought-pace" data-value="muito_rapido" class="option-button">Muito Rápido</button>
+                        </div>
+                        <input type="hidden" id="thought-pace" value="normal">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Clareza Interocepção:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="interoception-clarity" data-value="clara" class="option-button">Clara</button>
+                            <button onclick="selectButton(this)" data-group="interoception-clarity" data-value="media" class="option-button selected">Média</button>
+                            <button onclick="selectButton(this)" data-group="interoception-clarity" data-value="dificil" class="option-button">Difícil</button>
+                        </div>
+                        <input type="hidden" id="interoception-clarity" value="media">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="body-signals-v2" class="input-label">Sinais Internos Notados Agora?</label>
+                        <input type="text" id="body-signals-v2" placeholder="Ex: Coração, tensão...">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Sono (Última Noite):</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="sleep-quality" data-value="boa" class="option-button">Bom</button>
+                            <button onclick="selectButton(this)" data-group="sleep-quality" data-value="media" class="option-button selected">Médio</button>
+                            <button onclick="selectButton(this)" data-group="sleep-quality" data-value="ruim" class="option-button">Ruim</button>
+                            <button onclick="selectButton(this)" data-group="sleep-quality" data-value="deslocado" class="option-button">Deslocado</button>
+                        </div>
+                        <input type="hidden" id="sleep-quality" value="media">
+                    </div>
+                    <div>
+                        <label class="input-label">Humor Geral Hoje:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="general-mood" data-value="positivo" class="option-button">Positivo</button>
+                            <button onclick="selectButton(this)" data-group="general-mood" data-value="neutro" class="option-button selected">Neutro</button>
+                            <button onclick="selectButton(this)" data-group="general-mood" data-value="negativo" class="option-button">Negativo</button>
+                            <button onclick="selectButton(this)" data-group="general-mood" data-value="irritado" class="option-button">Irritado</button>
+                        </div>
+                        <input type="hidden" id="general-mood" value="neutro">
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="block-label">Sensações Físicas / Dor</label>
+                    <div style="margin-bottom: 10px;">
+                        <label for="pain-level" class="input-label">Nível de Dor Física Atual (0=Nenhuma, 5=Severa): <span class="range-value-display">0</span></label>
+                        <input type="range" id="pain-level" min="0" max="5" value="0">
+                    </div>
+                    <div>
+                        <label for="pain-location" class="input-label">Localização/Tipo da Dor (Opcional):</label>
+                        <input type="text" id="pain-location" placeholder="Ex: Cabeça, costas, muscular...">
+                    </div>
+                </div>
+                <div class="question-block">
+                    <label class="block-label">Demandas e Interações</label>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Gasto Social Hoje:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="social-energy" data-value="nenhuma" class="option-button selected">Mínimo</button>
+                            <button onclick="selectButton(this)" data-group="social-energy" data-value="pouca" class="option-button">Pouco</button>
+                            <button onclick="selectButton(this)" data-group="social-energy" data-value="media" class="option-button">Moderado</button>
+                            <button onclick="selectButton(this)" data-group="social-energy" data-value="muita" class="option-button">Alto</button>
+                        </div>
+                        <input type="hidden" id="social-energy" value="nenhuma">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Esforço de Masking Hoje:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="masking-effort" data-value="nenhum" class="option-button selected">Mínimo</button>
+                            <button onclick="selectButton(this)" data-group="masking-effort" data-value="pouco" class="option-button">Pouco</button>
+                            <button onclick="selectButton(this)" data-group="masking-effort" data-value="medio" class="option-button">Médio</button>
+                            <button onclick="selectButton(this)" data-group="masking-effort" data-value="alto" class="option-button">Alto</button>
+                        </div>
+                        <input type="hidden" id="masking-effort" value="nenhum">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Nível de Ansiedade com Demandas Hoje:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="demand-anxiety" data-value="baixa" class="option-button selected">Baixo (Tranquilo)</button>
+                            <button onclick="selectButton(this)" data-group="demand-anxiety" data-value="media" class="option-button">Médio (Resistente)</button>
+                            <button onclick="selectButton(this)" data-group="demand-anxiety" data-value="alta" class="option-button">Alto (Avesso)</button>
+                            <button onclick="selectButton(this)" data-group="demand-anxiety" data-value="evitando" class="option-button">Evitando Ativamente</button>
+                        </div>
+                        <input type="hidden" id="demand-anxiety" value="baixa">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="input-label">Necessidade de Controle/Flexibilidade Hoje:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="control-need" data-value="baixa" class="option-button selected">Baixa</button>
+                            <button onclick="selectButton(this)" data-group="control-need" data-value="media" class="option-button">Média</button>
+                            <button onclick="selectButton(this)" data-group="control-need" data-value="alta" class="option-button">Alta</button>
+                        </div>
+                        <input type="hidden" id="control-need" value="baixa">
+                    </div>
+                    <div>
+                        <label class="input-label">Previsibilidade do Dia:</label>
+                        <div>
+                            <button onclick="selectButton(this)" data-group="predictability" data-value="muito" class="option-button">Alta</button>
+                            <button onclick="selectButton(this)" data-group="predictability" data-value="normal" class="option-button selected">Normal</button>
+                            <button onclick="selectButton(this)" data-group="predictability" data-value="algumas_surpresas" class="option-button">Surpresas</button>
+                            <button onclick="selectButton(this)" data-group="predictability" data-value="muito_inesperado" class="option-button">Imprevisível</button>
+                        </div>
+                        <input type="hidden" id="predictability" value="normal">
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="analyzeState()" class="action-button mt-8" style="width: 100%; padding: 10px;">
+                ✔ Analisar e Sugerir
+            </button>
+            <div id="feedback-area" class="hidden">
+                <h3>💡 Análise e Sugestões:</h3>
+                <div id="feedback-content" style="font-size: 0.9em;"></div>
+            </div>
+        </section>
+    </div>
+
+    <div id="tab-tools" class="tab-content">
+        <h2 style="color: var(--secondary-color);">Ferramentas Rápidas</h2>
+        <p style="color: var(--secondary-color); margin-bottom: 15px; font-size: 0.9em;">Relaxamento, distração ou pausa ativa.</p>
+        <div>
+            <div class="collapsible-container" style="border-color: var(--secondary-color);">
+                <button onclick="toggleCollapsible('relaxation-content', this)" class="collapsible-button" style="color: var(--secondary-color); border-color: var(--secondary-color);"><span>🌬️ Espaço Relax</span><span class="section-arrow">▼</span></button>
+                <div id="relaxation-content" class="collapsible-content">
+                    <div class="breathing-instructions"><h4 style="color: var(--secondary-color);">Respiração Consciente (Caixa 4x4)</h4><p>Inspire (4s), Segure (4s), Expire (4s), Segure (4s). Repita.</p><p><em>(Imagine um círculo expandindo e contraindo)</em></p></div>
+                    <div style="margin-bottom: 15px; text-align: center; font-size: 0.9em;"><h4 style="color: var(--secondary-color);">Pausa Mindfulness (1-3 min)</h4><p>Feche os olhos suavemente. Sinta seus pés no chão. Note sua respiração entrando e saindo, sem julgamento. Apenas observe.</p></div>
+                    <div style="text-align: center; font-size: 0.9em;"><h4 style="color: var(--secondary-color);">Grounding 5-4-3-2-1</h4><p>Nomeie mentalmente: <strong>5</strong> coisas que vê, <strong>4</strong> que toca, <strong>3</strong> que ouve, <strong>2</strong> que cheira, <strong>1</strong> que saboreia (ou 1 qualidade sua).</p></div>
+                </div>
+            </div>
+            <div class="collapsible-container" style="border-color: var(--warning-color);">
+                <button onclick="toggleCollapsible('hyperfocus-content', this)" class="collapsible-button" style="color: var(--warning-color); border-color: var(--warning-color);"><span>⚡ Hiperfoco, Quiz & Pausa Ativa</span><span class="section-arrow">▼</span></button>
+                <div id="hyperfocus-content" class="collapsible-content">
+                    <h4 style="color: var(--warning-color);">Explore seus Interesses:</h4><p style="font-size: 0.85em; color: var(--text-light); margin-bottom: 8px;">Clique para prompt ou quiz!</p>
+                    <div style="margin-bottom: 12px;"><button onclick="handleHyperfocusClick('wot')" class="option-button hyperfocus-button" style="background-color: #e0f2fe;">WoT</button> <button onclick="handleHyperfocusClick('esl')" class="option-button hyperfocus-button" style="background-color: #d1fae5;">ESL (Quiz)</button> <button onclick="handleHyperfocusClick('music')" class="option-button hyperfocus-button" style="background-color: #fce7f3;">Pop (Quiz)</button> <button onclick="handleHyperfocusClick('ai')" class="option-button hyperfocus-button" style="background-color: #f3e8ff;">IA</button> <button onclick="handleHyperfocusClick('tech')" class="option-button hyperfocus-button" style="background-color: #e5e7eb;">Tech</button> <button onclick="handleHyperfocusClick('pc')" class="option-button hyperfocus-button" style="background-color: #ffedd5;">PCs</button></div>
+                    <div id="hyperfocus-display">Clique em um tópico acima!</div>
+                    <h4 style="color: var(--warning-color); margin-top: 15px;">Alongamentos Rápidos:</h4><p style="font-size: 0.85em; color: var(--text-light); margin-bottom: 8px; text-align: center;">Pausas curtas (15-30s cada).</p>
+                    <div style="margin-bottom: 12px;"><div class="stretch-info"> <p><strong>Pescoço:</strong> Incline lado a lado. Gire devagar.</p> </div><div class="stretch-info"> <p><strong>Ombros:</strong> Gire para trás/frente. Eleve/abaixe.</p> </div><div class="stretch-info"> <p><strong>Punhos/Dedos:</strong> Gire punhos. Abra/feche mãos.</p> </div><div class="stretch-info"> <p><strong>Tronco:</strong> Sentado, gire tronco. Alongue braços.</p> </div></div>
+                    <h4 style="color: var(--warning-color); margin-top: 15px;">Momento da História:</h4><p id="story-prompt" style="font-style: italic; font-size: 0.9em; background-color: #fff; padding: 8px; border-radius: 3px; margin-bottom: 8px; border: 1px solid var(--warning-color);">...</p><button onclick="showNewStoryPrompt()" class="option-button" style="font-size: 0.85em; background-color: #f3f4f6;">Nova Ideia</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-strategies" class="tab-content">
+        <h2 style="color: var(--tertiary-color);">Estratégias Específicas</h2>
+        <p style="color: var(--tertiary-color); margin-bottom: 15px; font-size: 0.9em;">Guias rápidos para situações comuns e chaves de cuidado PDA. Clique no título para expandir.</p>
+        <div>
+            <div class="accordion-item" id="strategy-pda-keys">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🔑 Chaves para o Cuidado (PDA)</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Baseado nas abordagens mais recentes para o perfil PDA. Lembre-se: **PDA é uma resposta à ansiedade extrema com demandas e à busca por autonomia.**</p>
+                    <h4>Estratégias Chave (Foco em Colaboração e Redução de Demanda):</h4>
+                    <ul>
+                        <li><strong>Linguagem Declarativa:</strong> Compartilhe suas observações ou pensamentos em vez de dar ordens ou fazer perguntas diretas.
+                            <ul>
+                                <li>**Ex:** Em vez de "Lave a louça", tente "Percebi que a louça precisa ser lavada."</li>
+                                <li>**Ex:** Em vez de "Vá se vestir", tente "Está ficando frio lá fora."</li>
+                            </ul>
+                            Isso reduz a pressão e convida à colaboração.
+                        </li>
+                        <li><strong>Resolução Colaborativa de Problemas (CPS):</strong> Trabalhe *com* a pessoa para encontrar soluções.
+                            <ul>
+                                <li>**Passo 1 (Empatia):** Entenda a preocupação da pessoa ("O que está acontecendo?").</li>
+                                <li>**Passo 2 (Definir o Problema):** Apresente sua preocupação ("Eu preciso que...").</li>
+                                <li>**Passo 3 (Convite):** Busquem uma solução que funcione para ambos ("Como podemos resolver isso juntos?").</li>
+                            </ul>
+                            Foca em "habilidade, não vontade".
+                        </li>
+                        <li><strong>Ofereça Escolhas Reais e Flexibilidade:</strong> Propor opções igualmente aceitáveis ou permitir negociação ajuda a restaurar o senso de controle.</li>
+                        <li><strong>Evitação é Ansiedade:</strong> Lembre-se que a resistência é uma resposta de pânico à perda de controle percebida, não desafio. Valide a dificuldade.</li>
+                        <li><strong>Sem Punição/Recompensa Direta:</strong> Recompensas condicionadas ou punições aumentam a demanda e a ansiedade, piorando a situação a longo prazo.</li>
+                        <li><strong>Tempo de Processamento:</strong> Demande menos urgência. Dê e permita tempo para processar informações e transições.</li>
+                        <li><strong>Confiança e Honestidade:</strong> A base de tudo. Seja transparente sobre as razões das coisas e suas próprias necessidades.</li>
+                        <li><strong>Monitore a Carga de Demandas:</strong> Ajude a pessoa a identificar e reduzir o total de demandas (incluindo as internas) para evitar o acúmulo de estresse.</li>
+                        <li><strong>Crises como Pânico Involuntário:</strong> Trate meltdowns/shutdowns como ataques de pânico, focando em segurança e descompressão.</li>
+                    </ul>
+                    <p><em>Para mais detalhes e auto-reflexão, veja a aba <span class="link-interno" onclick="openAccordionByTitle(event, 'Ciclo Demanda-Ansiedade', 'tab-learn-topics')">Tópicos (PDA)</span> ou a <span class="link-interno" onclick="openTab(event, 'tab-pda-quiz')">Auto-Reflexão PDA</span>.</em></p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-overload">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>⚠️ Lidando com Sobrecarga / Crise</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Se sentir que está entrando em crise (Meltdown/Shutdown):</h4>
+                    <p>Lembre-se: é uma resposta involuntária de sobrecarga do sistema nervoso. Prioridade é segurança e regulação.</p>
+                    <ul>
+                        <li><strong>1. Segurança Primeiro:</strong> Afaste-se de perigos. Vá para um local seguro.</li>
+                        <li><strong>2. Reduza Estímulos AGORA:</strong> Saia do ambiente, use fones/óculos, feche os olhos. Sinalize que precisa de menos estímulo.</li>
+                        <li><strong>3. Ancoragem (Grounding):</strong> Respire fundo (respiração caixa), sinta os pés no chão, use 5-4-3-2-1 (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Espaço Relax</span>). Toque em algo com textura, aperte um objeto pesado.</li>
+                        <li><strong>4. Não Lute Contra:</strong> Permita a liberação (meltdown) ou o desligamento (shutdown) em local seguro. É uma necessidade fisiológica do corpo para se re-regular.</li>
+                        <li><strong>5. Valide o Cansaço:</strong> É exaustivo. Permita-se descansar profundamente, sem culpa.</li>
+                    </ul>
+                    <h4>Se alguém próximo estiver em crise:</h4>
+                    <ul>
+                        <li><strong>1. Mantenha a Calma:</strong> Sua calma é crucial para não escalar a situação.</li>
+                        <li><strong>2. Garanta Segurança:</strong> Remova perigos. Afaste curiosos ou outros estressores.</li>
+                        <li><strong>3. Reduza Demandas/Estímulos:</strong> **SEM perguntas, ordens, raciocínio.** Fale baixo/nada. Diminua luzes/sons, ofereça fones/óculos.</li>
+                        <li><strong>4. Dê Espaço Físico:</strong> Não toque sem permissão explícita. Permita que a pessoa se mova ou se isole se precisar.</li>
+                        <li><strong>5. Não Julgue:</strong> Não é birra ou manipulação. É uma resposta de pânico. Evite frases como "não é nada".</li>
+                        <li><strong>6. Presença Calma e Silenciosa:</strong> Se apropriado e desejado pela pessoa, ofereça uma presença de co-regulação silenciosa.</li>
+                        <li><strong>7. Apoie a Recuperação:</strong> Ofereça água, um cobertor pesado, um espaço seguro. Valide os sentimentos **depois** da crise, sem pressão.</li>
+                    </ul>
+                    <p style="margin-top:10px;"><em>Lembre-se que a resposta à sobrecarga varia. Entender a diferença entre <strong>meltdown</strong> (liberação de energia) e <strong>shutdown</strong> (retraimento/conservação) ajuda a aplicar o apoio mais adequado. Veja detalhes em <span class='link-interno' onclick='openAccordionByTitle(event, "Meltdowns e Shutdowns", "tab-learn-autism")'>Aprender: Autismo</span>.</em></p>
+            </div>
+
+            <div class="accordion-item" id="strategy-anxiety">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>❤️‍🩹 Gerenciando Ansiedade / Zona Agitada</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Reconhecendo a Zona Agitada:</h4><p>Irritabilidade, dificuldade foco, pensamentos acelerados, tensão muscular, coração rápido, vontade de evitar/fugir, sentir-se "preso". É um sinal de que o sistema nervoso está ativado.</p><h4>Estratégias de Regulação e Recuperação:</h4><ul><li><strong>1. Identifique Gatilhos:</strong> O que ativou o sistema nervoso? (Incerteza? Demanda? Social? Sensorial? Cansaço? Inércia autista?).</li><li><strong>2. Valide o Sentimento:</strong> "Ok sentir isso. Meu corpo está reagindo ao estresse."</li><li><strong>3. Regulação do Sistema Nervoso:</strong>
+    <ul>
+        <li>**Respiração Lenta:** Use a Respiração Caixa 4x4 (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Espaço Relax</span>). Experimente o "Suspiro Fisiológico" (duas inspirações curtas pelo nariz, uma expiração longa pela boca).</li>
+        <li>**Movimento/Stimming:** Permita pausas para stimming seguro, caminhar, alongar (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'hyperfocus-content')">Pausa Ativa</span>).</li>
+        <li>**Co-Regulação (se possível):** Presença calma de alguém de confiança, se você se sentir seguro.</li>
+        <li>**Interesses Especiais / Hiperfoco:** Engajar-se em um interesse profundo (Descanso Monotrópico) pode ser muito regulador e rejuvenescedor. Use o <span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'hyperfocus-content')">Hiperfoco</span>.</li>
+    </ul>
+</li><li><strong>4. Ajuste Sensorial:</strong> Reduza luz/som, use fones de ouvido (cancelamento de ruído ou ruído marrom), coloque roupas confortáveis, vá para um ambiente de baixo estímulo.</li><li><strong>5. Check Interoceptivo:</strong> Fome, sede, sono, banheiro? Dor? O corpo precisa de atenção. (<span class="link-interno" onclick="openAccordionByTitle(event, 'Interocepção', 'tab-learn-autism')">Aprender sobre Interocepção</span>)</li><li><strong>6. Gerenciamento de Demandas:</strong> Reduza/adie o que for possível. Use comunicação indireta e flexibilidade (<span class="link-interno" onclick="openAccordionByTitle(event, 'Ciclo Demanda-Ansiedade', 'tab-learn-topics')">Info PDA</span>, <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-pda-keys')">Chaves PDA</span>).</li><li><strong>7. Comunicação Assertiva:</strong> Comunique suas necessidades de forma clara, mas adaptada ao seu estilo. ("Preciso de um momento.", "Não consigo processar isso agora.", <span class="link-interno" onclick="openAccordionByTitle(event, 'Auto-Advocacia', 'tab-learn-social')">Info</span>).</li><li><strong>8. Planeje Recuperação:</strong> Após um período agitado, o corpo precisa de descanso intencional. Priorize o sono e atividades de baixo estímulo.</li></ul>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-sensory-environment">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🌬️ Ambiente e Regulação Sensorial</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Adaptar o ambiente e usar estratégias sensoriais pode prevenir sobrecarga e ajudar na regulação do sistema nervoso. Considere seu perfil sensorial (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span>) e experimente:</p>
+                    <h4>Ajustes no Ambiente Físico:</h4>
+                    <ul>
+                        <li><strong>Iluminação:</strong> Reduza luzes fluorescentes. Use luz natural. Dimmer, abajures, óculos escuros ou com filtro de cor podem ajudar. Cortinas blackout para o sono.</li>
+                        <li><strong>Sons:</strong> Reduza ruídos de fundo. Use fones de ouvido com cancelamento de ruído ou protetores auriculares. Experimente **Ruído Marrom** (Brown Noise) para focar ou acalmar, além do ruído branco.</li>
+                        <li><strong>Espaço Pessoal:</strong> Garanta espaço suficiente. Ambientes menos cheios são geralmente melhores.</li>
+                        <li><strong>Visual:</strong> Prefira cores calmas, evite padrões complexos. Use organizadores visuais e mantenha o ambiente organizado e previsível.</li>
+                        <li><strong>Olfato:</strong> Evite perfumes fortes ou cheiros intensos. Use aromas calmantes (lavanda?) se ajudar.</li>
+                    </ul>
+                    <h4>Estratégias Sensoriais Pessoais (Regulação do Sistema Nervoso):</h4>
+                    <ul>
+                        <li><strong>Pausas Sensoriais / Caverna Sensorial:</strong> Planeje momentos em um local quieto e com poucos estímulos para se regular.</li>
+                        <li><strong>Ferramentas Sensoriais ('Kit Calmante'):</strong> Tenha à mão itens que te ajudem a regular: fidget toys, bolinhas de apertar, massinha, Tangle, chewlery, fones, óculos escuros, cobertor pesado, lap pad.</li>
+                        <li><strong>Pressão Profunda / Propriocepção:</strong> Abraços apertados (se gostar), cobertores pesados, roupas de compressão, massagem ou atividades que envolvam empurrar/puxar. É uma forma rápida e eficaz de aterrar o corpo.</li>
+                        <li><strong>Movimento ('Stimming' Seguro):</strong> Permita-se fazer stimming, é uma forma natural de auto-regulação. Encontre formas seguras e aceitáveis.</li>
+                        <li><strong>Natureza:</strong> Estar em contato com a natureza pode ser altamente regulador.</li>
+                        <li><strong>Respiração e Mindfulness:</strong> Use técnicas do <span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Espaço Relax</span>.</li>
+                        <li><strong>Reset Digital:</strong> Reduza o tempo de tela (especialmente luz azul à noite) e engaje em atividades sensoriais mais orgânicas para redefinir o sistema nervoso.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-communicate-needs">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🗣️ Comunicar Necessidades Eficazmente</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Muitas vezes, a frustração ou o colapso vêm de necessidades não atendidas ou não comunicadas. Aprender a identificar e expressar essas necessidades de forma clara e assertiva (mas adaptada ao seu estilo) é uma habilidade poderosa. Baseado no conceito de Comunicação Funcional:</p>
+                    <ol>
+                        <li><strong>Identifique a Necessidade/Sentimento:</strong> Use o <span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span> ou a auto-reflexão (<span class="link-interno" onclick="openAccordionByTitle(event, 'Entendendo a Função do Comportamento', 'tab-learn-topics')">Função do Comportamento</span>) para entender o que você realmente precisa naquele momento. É um descanso? Um item específico? Sair de um ambiente sensorialmente agressivo? Evitar uma demanda que parece impossível agora? Menos interação social?</li>
+                        <li><strong>Escolha a Forma de Comunicar:</strong> O que funciona melhor para você e na situação?
+                            <ul>
+                                <li>Falar diretamente (Ex: "Preciso de uma pausa agora.", "Este barulho está me incomodando muito.", "Podemos fazer isso depois?").</li>
+                                <li>Escrever ou digitar (Ex: Enviar uma mensagem, usar um app de comunicação, mostrar um cartão).</li>
+                                <li>Usar um sinal ou gesto combinado previamente com pessoas de confiança.</li>
+                                <li>Usar um sistema de comunicação alternativa (AAC) se aplicável.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Seja o Mais Claro e Direto Possível (Adaptado):</strong> Tente evitar ambiguidades. Frases "Eu" ajudam ("Eu preciso...", "Eu sinto..."). Considere se a comunicação indireta (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-pda-keys')">Chaves PDA</span>) é mais eficaz em certas situações.</li>
+                        <li><strong>Pratique em Momentos de Calma:</strong> Ensaiar como pedir o que precisa quando você está regulado pode facilitar na hora do estresse.</li>
+                    </ol>
+                    <p>Lembre-se: Você tem direito a comunicar suas necessidades. Encontrar a forma que funciona para você é chave.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-anger-frustration">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>😠 Lidando com Frustração Intensa ou Raiva</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Sentir raiva ou frustração intensa é humano, mas quando isso leva a reações que causam sofrimento a você ou outros, buscar estratégias adaptadas pode ajudar. Lembre-se que respostas intensas podem ser parte de um 'rumble' (<span class="link-interno" onclick="openAccordionByTitle(event, 'Sinais de Alerta', 'tab-learn-autism')">Sinais de Alerta</span>) ou sobrecarga.</p>
+                    <h4>Passos Adaptados para Gerenciar:</h4>
+                    <ol>
+                        <li><strong>Reconhecer os Sinais Iniciais:</strong> Como a raiva/frustração começa no seu corpo? (Tensão, calor, coração acelerado, pensamentos repetitivos?). Use o <span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span> para aumentar essa consciência.</li>
+                        <li><strong>Pausar (Se Possível):</strong> Antes de reagir, tente criar um espaço. Afaste-se da situação se for seguro e possível. Respire fundo (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Espaço Relax</span>).</li>
+                        <li><strong>Identificar o Gatilho/Necessidade:</strong> O que desencadeou a emoção? Foi uma injustiça percebida? Uma regra quebrada? Uma demanda inesperada? Uma sobrecarga sensorial? Uma necessidade não atendida (<span class="link-interno" onclick="openAccordionByTitle(event, 'Entendendo a Função do Comportamento', 'tab-learn-topics')">Função</span>)?</li>
+                        <li><strong>Usar Estratégias de Acalmamento:</strong>
+                            <ul>
+                                <li>Técnicas de respiração ou grounding (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Espaço Relax</span>).</li>
+                                <li>Movimento regulatório: Caminhar, pular, fazer stimming seguro, apertar algo.</li>
+                                <li>Distração Positiva: Engajar-se brevemente em um interesse (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'hyperfocus-content')">Hiperfoco</span>), ouvir música calmante.</li>
+                                <li>Ajuste Sensorial: Reduzir luz/som, usar fones, buscar um local quieto (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-sensory-environment')">Ambiente Sensorial</span>).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Resolver o Problema (Quando Calmo):</strong> Se a raiva veio de um problema concreto, pense em passos simples para resolvê-lo ou pedir ajuda. (Ex: 1. Qual o problema real? 2. Quais 2-3 opções eu tenho? 3. Qual a mais viável agora? 4. Tentar.). Se for uma questão de comunicação, use as dicas de <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-communicate-needs')">Comunicar Necessidades</span>.</li>
+                        <li><strong>Reparar (Se Necessário):</strong> Se a reação afetou outra pessoa, considere um pedido de desculpas ou uma explicação (quando calmo), focando no seu estado interno ("Eu estava sobrecarregado") em vez de justificar a ação.</li>
+                    </ol>
+                    <p>Lembre-se, o objetivo não é *não sentir* raiva, mas sim gerenciá-la de forma menos prejudicial. Se a raiva ou agressividade são frequentes e intensas, buscar apoio profissional (<span class="link-interno" onclick="openAccordionByTitle(event,'Saúde Mental', 'tab-learn-topics')">Saúde Mental</span>) é importante.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-exercise">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🏃 Movimento e Exercício Físico</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>A prática regular de exercícios físicos, especialmente aeróbicos vigorosos (como correr, nadar, dançar, pular corda - o que funcionar para você), tem mostrado benefícios na redução da irritabilidade, ansiedade e comportamentos agressivos em algumas pessoas no espectro autista. Além disso, ajuda na regulação do humor, sono e bem-estar geral.</p>
+                    <p>Encontre uma atividade que você goste e que seja acessível. Considere os aspectos sensoriais do ambiente (academia barulhenta vs. caminhar ao ar livre?). Comece devagar e tente incorporar movimento regular na sua rotina.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-sleep">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🌙 Estratégias para o Sono</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Dificuldades Comuns:</h4><p>Adormecer, perceber cansaço, resistência a rotinas (demanda), ansiedade, medo de perder controle, despertares, padrões deslocados (DSPS/Non-24, <span class="link-interno" onclick="openAccordionByTitle(event, 'Sono e Ritmos Circadianos', 'tab-learn-topics')">Info</span>).</p><h4>Estratégias Adaptáveis (considerando PDA):</h4><ul><li>Reduzir Demanda de "Dormir": Foque em "descansar", "relaxar no quarto".</li><li>"Wind-Down" Flexível: Menu de opções calmas (ler, ouvir música suave, áudio livro) em vez de rotina rígida.</li><li>Ambiente Confortável: Controle de luz (blackout?), som (ruído branco?), temperatura, texturas (cobertor pesado?). Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-sensory-environment')">Ambiente/Sensorial</span>.</li><li>Gerenciar Ansiedade Pré-Sono: Anotar preocupações, <span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">relaxamento</span>, distração leve.</li><li>Co-Regulação: Presença calma de outra pessoa (se ajuda).</li><li>Aceitação: Se o sono não vier, levante e faça algo muito calmo e pouco estimulante em luz baixa, tente novamente mais tarde. Evite lutar contra.</li><li>Considerar Ritmo Circadiano: Não forçar horário "normal" se o seu padrão é outro (DSPS/Non-24). Adapte a vida se possível.</li><li>Higiene do Sono Adaptada: Atenção a cafeína, luz (manhã/telas), horários de despertar (gentil, sem alarme estridente), refeições.</li><li>Ajuda Profissional: Se persistente, buscar médico/terapeuta com experiência em autismo/PDA.</li></ul>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-self-advocacy">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>📣 Auto-Advocacia na Prática</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Passos:</h4><ul><li>Prepare-se (Autoconhecimento: <span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span>, <span class="link-interno" onclick="openTab(event, 'tab-learn-autism')">Aprender</span>, <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-pda-keys')">Chaves PDA</span>).</li><li>Escolha Momento e Meio (calma, falar/escrever?).</li><li>Seja Claro e Direto (mas considere <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-communicate-needs')">comunicação</span> indireta se for melhor). Use frases "Eu".</li><li>Foque na Solução/Ajuste (o que ajudaria?).</li><li>Ofereça Informação (se necessário e seguro, <span class="link-interno" onclick="openTab(event, 'tab-learn-autism')">Aba Aprender</span>?).</li><li>Negocie Alternativas (flexibilidade).</li><li>Documente (se formal, e-mails, etc.).</li><li>Peça Apoio (confiança, <span class="link-interno" onclick="openAccordionByTitle(event, 'Direitos e Suporte', 'tab-learn-social')">Rede</span>).</li><li>Saiba Quando Recuar (se a situação ficar muito demandante/estressante).</li></ul>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-reflection">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>↔️ Reflexão: Entendendo Meu Momento</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Conectando Estado Atual (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span>) e Características:</h4><ul><li>Energia Baixa/Sono Ruim → Aumenta sensibilidade? Dificulta lidar com demandas? Custo do masking maior?</li><li>Concentração Difícil → Causa (Sensorial? Cansaço? Ansiedade? Demanda interna/externa?)?</li><li>Interocepção Confusa → Ignorando sinais (fome/sede/cansaço)? Afeta humor/energia/regulação?</li><li>Zona Agitada/Sobrecarga → Quais traços + pronunciados? Ajuda a pedir apoio (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-overload')">Estratégias Crise</span>). Gatilhos recentes?</li><li>Ansiedade com Demandas Alta/Evitando → Ligado a quê? (Perda de controle? Cansaço? Incerteza?) Explore <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-pda-keys')">Chaves PDA</span> e <span class="link-interno" onclick="openAccordionByTitle(event,'Entendendo a Função', 'tab-learn-topics')">Função</span>.</li><li>Necessidade de Controle Alta → O que está fora do controle? Onde posso ter mais autonomia/escolha?</li><li>Masking Alto → Custo energético? Necessidade de recuperar depois? Onde posso ser mais autêntico?</li></ul>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="strategy-inertia-navigation">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🧭 Navegando a Inércia Autista e Transições</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>A <strong>Inércia Autista</strong> é a dificuldade significativa em iniciar uma nova tarefa, parar uma tarefa em andamento ou mudar o foco de uma atividade para outra. Não é preguiça, mas uma característica do processamento monotrópico que pode causar ansiedade e frustração.</p>
+                    <h4>Estratégias para Gerenciar a Inércia e Transições:</h4>
+                    <ul>
+                        <li><strong>1. Pausas de Transição:</strong> Em vez de mudar bruscamente, crie uma "ponte" entre as atividades. Ex: termine um episódio, levante para beber água, e só então comece a próxima tarefa.</li>
+                        <li><strong>2. Micro-Início:</strong> Se a dificuldade é iniciar, comece com o menor passo possível. Ex: "Vou abrir o documento" em vez de "Vou escrever o relatório". Foco em ganhar **momentum**.</li>
+                        <li><strong>3. Visualização:</strong> Mentalize ou anote os passos necessários para a transição. Use checklists.</li>
+                        <li><strong>4. "Body Doubling" (Digital/Físico):</strong> Ter alguém (mesmo que online, como um colega de trabalho ou amigo) presente enquanto você inicia uma tarefa pode ajudar a quebrar a inércia, sem que essa pessoa precise interagir diretamente.</li>
+                        <li><strong>5. Interesses Especiais como "Ponte":</strong> Use um hiperfoco brevemente como uma "recompensa" ou um "aterramento" antes ou depois de uma transição difícil.</li>
+                        <li><strong>6. Flexibilidade na Ordem:</strong> Se a ordem tradicional não funciona, experimente fazer a tarefa de trás para frente, ou a parte mais fácil primeiro.</li>
+                        <li><strong>7. Tempo de "Wind-Down":</strong> Permita-se tempo para "desacelerar" de uma atividade intensa antes de tentar parar ou mudar.</li>
+                        <li><strong>8. Comunicação Antecipada:</strong> Se alguém precisa que você mude de atividade, peça um aviso prévio ("Me dê 5 minutos antes de precisarmos ir").</li>
+                    </ul>
+                    <p><em>Entender e planejar para a inércia pode reduzir significativamente a ansiedade e aumentar a produtividade e o bem-estar.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div><!-- DIV DE SEGURANÇA PARA CORRIGIR ESTRUTURA -->
+
+    <div id="tab-learn-autism" class="tab-content">
+        <h2 style="color: var(--tertiary-color);">Aprender: Autismo e Eu</h2>
+        <p style="color: var(--tertiary-color); margin-bottom: 15px; font-size: 0.9em;">Características centrais.</p>
+        <div>
+            <div class="accordion-item"><button class="accordion-button" onclick="toggleAccordion(this)"> <span>🧩 O que é Autismo?</span> <span class="accordion-arrow">▼</span> </button><div class="accordion-content"> <h4>Neurotipo, não doença. Afeta percepção, processamento, comunicação, interação.</h4> <ul> <li>Espectro: Varia muito.</li> <li>Neurodiversidade: Variação natural da neurologia humana.</li> <li>Características Comuns (variáveis): Processamento sensorial atípico, comunicação e interação social diferentes, interesses intensos (hiperfocos), necessidade de rotina/previsibilidade (ou flexibilidade, como em PDA).</li> </ul>
+                <ul>
+                    <li><strong>Neurodiversidade:</strong> Entende que o autismo (assim como TDAH, dislexia, etc.) não é uma doença a ser curada, mas uma variação natural do cérebro humano com seus próprios pontos fortes e desafios. O foco muda de "consertar" para "apoiar e incluir".</li>
+                    <li><strong>Evitar Rótulos de Funcionamento:</strong> Termos como "alto funcionamento" ou "baixo funcionamento" são problemáticos e desaconselhados por muitos autistas e defensores. Eles simplificam demais a experiência, ignoram que as habilidades podem variar muito dependendo do contexto e do dia, e podem levar à negação de apoio para uns ("alto funcionamento" não precisa de ajuda?) ou à subestimação do potencial de outros ("baixo funcionamento" não consegue?). É mais útil descrever necessidades de suporte específicas em diferentes áreas.</li>
+                </ul>
+            </div></div>
+            <div class="accordion-item"><button class="accordion-button" onclick="toggleAccordion(this)"> <span>🧠 Monotropismo e Foco</span> <span class="accordion-arrow">▼</span> </button><div class="accordion-content"> <h4>Uma Teoria Unificadora da Cognição Autista</h4> <p>O <strong>Monotropismo</strong> é uma teoria que descreve a mente autista como tendo uma tendência a concentrar a energia e a atenção em um número limitado de interesses ou tarefas de cada vez, criando um "túnel de atenção" profundo. Não é um déficit, mas um estilo cognitivo diferente.</p> <ul> <li><strong>Fluxo de Atenção:</strong> Pessoas monotrópicas entram em estados de fluxo profundo (hiperfoco), o que permite grande paixão, aprendizado e expertise em seus interesses.</li> <li><strong>Conexão com Outros Traços:</strong> O Monotropismo ajuda a explicar várias características autistas de forma unificada: <ul> <li><strong>Hiperfoco:</strong> É a manifestação mais conhecida do monotropismo, um estado de concentração intensa e prazerosa. Use a <span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'hyperfocus-content')">aba Ferramentas</span> para explorar interesses.</li> <li><strong>Inércia Autista:</strong> A grande dificuldade em iniciar, parar ou trocar de tarefas é o desafio de sair de um "túnel de atenção" para entrar em outro. Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-inertia-navigation')">estratégias para inércia</span>.</li> <li><strong>Sobrecarga:</strong> Ocorre quando o ambiente exige que a atenção seja dividida entre muitos canais (sons, luzes, conversas), sobrecarregando o sistema monotrópico.</li> </ul> </li> </ul> <p>Entender se você tem um processamento monotrópico pode ser chave para criar um ambiente e rotina que funcionem para você, em vez de contra você.</p> </div></div>
+            <div class="accordion-item"><button class="accordion-button" onclick="toggleAccordion(this)"> <span>⚡ Meltdowns e Shutdowns</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Respostas involuntárias à sobrecarga extrema. Não são birras ou manipulação.</h4>
+                    <p>Meltdowns e shutdowns são sinais de que a capacidade de lidar com os estímulos, demandas ou estresse foi completamente ultrapassada. Entender suas diferenças ajuda na auto-compreensão e no manejo.</p>
+
+                    <h5 style="font-weight: bold; margin-top: 12px; color: var(--danger-color);">Meltdown Autista (Resposta Externa - "Luta/Fuga")</h5>
+                    <ul>
+                        <li><strong>Natureza:</strong> Reação predominantemente <strong>externalizada</strong>. O sistema entra em modo de defesa ativa.</li>
+                        <li><strong>Sistema Nervoso:</strong> Estado primariamente <strong>Simpático</strong> (hiper-excitação, alerta máximo, "acelerado").</li>
+                        <li><strong>Fluxo de Energia:</strong> <strong>Expulsão</strong> e liberação de energia/tensão acumulada.</li>
+                        <li><strong>Manifestações Típicas:</strong> Gritar, chorar muito alto e intensamente, bater (em si, objetos ou outros), chutar, jogar objetos, andar de um lado para o outro sem parar, stimming (movimentos auto-estimulatórios) muito intenso ou diferente do usual, tentar fugir do local.</li>
+                        <li><strong>Comunicação:</strong> Geralmente com vocalizações altas e intensas. Pode ocorrer perda temporária da fala funcional (incapacidade de usar a fala de forma útil no momento).</li>
+                        <li><strong>Movimento:</strong> Atividade física visivelmente <strong>aumentada</strong>, intensa, às vezes parecendo descontrolada.</li>
+                        <li><strong>Sensação Interna Comum:</strong> Emoções ativas e avassaladoras (raiva intensa, medo, frustração extrema), sensação de <strong>perda total de controle</strong>, sobrecarga que se tornou intolerável.</li>
+                        <li><strong>Duração Típica:</strong> Pode variar de alguns minutos a mais de uma hora.</li>
+                        <li><strong>Visibilidade:</strong> Geralmente <strong>alta</strong>, bastante óbvia para quem está perto.</li>
+                        <li><strong>Função Principal (Involuntária):</strong> Liberar uma pressão neurológica e/ou emocional insuportável; um <strong>sinal de socorro</strong> extremo do sistema nervoso.</li>
+                    </ul>
+
+                    <h5 style="font-weight: bold; margin-top: 12px; color: var(--secondary-color);">Shutdown Autista (Resposta Interna - "Congelamento")</h5>
+                    <ul>
+                        <li><strong>Natureza:</strong> Reação predominantemente <strong>internalizada</strong>. O sistema entra em modo de desligamento protetor.</li>
+                        <li><strong>Sistema Nervoso:</strong> Estado primariamente <strong>Vagal Dorsal</strong> (hipo-excitação, desligamento, "desacelerado").</li>
+                        <li><strong>Fluxo de Energia:</strong> <strong>Conservação</strong> extrema e retração de energia para dentro.</li>
+                        <li><strong>Manifestações Típicas:</strong> Retraimento social acentuado, falta de resposta (ou resposta muito lenta) a estímulos ou chamados, imobilidade ou movimentos muito reduzidos/lentos, ficar não-verbal (mutismo situacional), olhar fixo ou "vazio" ("blank"), parecer "congelado" ou ausente.</li>
+                        <li><strong>Comunicação:</strong> Fala muito reduzida ou <strong>completamente ausente</strong>; muito quieto.</li>
+                        <li><strong>Movimento:</strong> Atividade física visivelmente <strong>diminuída</strong>, imobilidade, lentidão acentuada.</li>
+                        <li><strong>Sensação Interna Comum:</strong> <strong>Dormência</strong> emocional, sensação de desapego ou dissociação da realidade, exaustão física e mental profunda, névoa mental (dificuldade extrema de pensar ou processar), sobrecarga.</li>
+                        <li><strong>Duração Típica:</strong> Pode durar de horas a, em casos mais severos ou prolongados, até dias.</li>
+                        <li><strong>Visibilidade:</strong> Geralmente <strong>baixa</strong>, muito sutil, pode ser facilmente confundida com calma aparente, desinteresse, cansaço comum ou "birra silenciosa".</li>
+                        <li><strong>Função Principal (Involuntária):</strong> Proteção contra a entrada de mais estímulos ou demandas; <strong>conservação extrema de energia</strong> quando os recursos do sistema estão completamente esgotados.</li>
+                    </ul>
+
+                    <p style="margin-top: 15px;">Ambos são experiências difíceis e indicam que o limite foi ultrapassado. Precisam de segurança, redução de estímulos/demandas e tempo para recuperação. Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-overload')">Estratégias: Lidando com Sobrecarga / Crise</span> para abordagens de apoio.</p>
+                </div>
+            </div>
+            <div class="accordion-item"><button class="accordion-button" onclick="toggleAccordion(this)"> <span>⚠️ Gatilhos para Sobrecarga</span> <span class="accordion-arrow">▼</span> </button><div class="accordion-content"> <h4>Acúmulo de estressores.</h4> <ul> <li>Sensorial (luz, som, cheiro, toque, etc).</li> <li>Comunicação/Social (dificuldade, masking, mal-entendidos).</li> <li>Demandas (externas ou internas, percebidas como perda de controle - ver <span class="link-interno" onclick="openAccordionByTitle(event, 'Ciclo Demanda-Ansiedade', 'tab-learn-topics')">PDA</span>).</li> <li>Mudanças (rotina, planos, ambiente).</li> <li>Emocional (ansiedade, frustração, injustiça).</li> <li>Cognitivo (muita informação, decisões).</li> <li>Interno (cansaço, fome, sede, dor, doença - veja <span class="link-interno" onclick="openAccordionByTitle(event,'Saúde Física', 'tab-learn-topics')">Saúde Física</span>).</li> </ul> </div></div>
+            <div class="accordion-item"><button class="accordion-button" onclick="toggleAccordion(this)"> <span>🌡️ Sinais de Alerta ('Rumble')</span> <span class="accordion-arrow">▼</span> </button><div class="accordion-content"> <h4>Perceber antes da crise. Podem ser sutis.</h4> <ul> <li>Físicos: Stimming muda (mais rápido/intenso/diferente), tensão muscular, respiração curta, calor/frio, fadiga súbita, rigidez, dor de cabeça/estômago.</li> <li>Comport.: Retraimento, irritabilidade, fala difícil/lenta/rápida/monótona, ecolalia aumentada, fuga de contato visual, busca por fuga/saída, menos masking, mais direto/rude.</li> <li>Mentais: Agitação, ansiedade crescente, confusão, "preso" em pensamentos, sensibilidade sensorial alta, dificuldade em processar, sensação de desligamento/distância.</li> </ul> </div></div>
+            <div class="accordion-item" id="learn-interoception"> <button class="accordion-button" onclick="toggleAccordion(this)"> <span>❤️‍🩹 Interocepção</span> <span class="accordion-arrow">▼</span> </button> <div class="accordion-content"> <h4>Percepção de sinais internos (fome, sede, cansaço, dor, emoções, temperatura, necessidade de ir ao banheiro). Crucial p/ auto-regulação.</h4> <p><strong>Diferenças Comuns:</strong> Hipo (sente menos/atrasado), Hiper (sente demais/intenso), Atípico (interpretação confusa dos sinais).</p> <p><strong>Impacto:</strong> Dificuldade em saber quando comer/beber/descansar, reconhecer doença/dor, identificar emoções, regular temperatura.</p> <p><strong>Melhorar:</strong> Atenção plena ao corpo (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-tools', 'relaxation-content')">Relax</span>), pausas regulares para checar ("Estou com sede?"), nomear sensações. Requer prática.</p> </div> </div>
+            <div class="accordion-item"> <button class="accordion-button" onclick="toggleAccordion(this)"> <span>⚖️ Auto-Regulação e Zonas</span> <span class="accordion-arrow">▼</span> </button> <div class="accordion-content"> <h4>Gerenciar estados internos para lidar com demandas e ambiente. Zonas (modelo simplificado):</h4> <ul> <li><strong>Verde (Calma):</strong> Regulado, descansado, pronto para aprender/conectar.</li> <li><strong>Amarela (Alerta/Agitada):</strong> Estresse aumentando, irritável, ansioso, dificuldade de foco, 'rumble'. Ação preventiva necessária.</li> <li><strong>Vermelha (Sobrecarga/Crise):</strong> Capacidade esgotada, meltdown/shutdown, pânico. Foco em segurança e redução de estímulos.</li> <li><strong>Azul (Desligado/Lento):</strong> Cansado, triste, doente, dificuldade em iniciar. Foco em descanso e necessidades básicas.</li> </ul> <p><strong>Objetivo:</strong> Reconhecer sua zona (<span class="link-interno" onclick="openTab(event, 'tab-checkin')">Check-in</span>) e usar <span class="link-interno" onclick="openTab(event, 'tab-strategies')">Estratégias</span> para voltar ao verde ou lidar com a zona atual.</p> </div> </div>
+            <div class="accordion-item"> <button class="accordion-button" onclick="toggleAccordion(this)"> <span>👂 Processamento Sensorial</span> <span class="accordion-arrow">▼</span> </button> <div class="accordion-content"> <h4>Processamento atípico dos 8 sentidos (visão, audição, olfato, paladar, tato, vestibular [movimento/equilíbrio], propriocepção [posição do corpo], interocepção [interno]).</h4> <ul> <li>Hipersensibilidade (Demais): Estímulos normais são avassaladores (luz forte, som alto, toque leve).</li> <li>Hipossensibilidade (De menos): Busca por estímulos intensos (movimento, pressão, sabores fortes).</li> <li>Atípico: Dificuldade em filtrar (ouvir tudo ao mesmo tempo), focar em detalhes irrelevantes, processar múltiplos sentidos, integração sensorial.</li> </ul> <p>Identificar seu perfil ajuda a criar <span class="link-interno" onclick="openTab(event, 'tab-strategies')">estratégias</span> e acomodações.</p>
+                <p><strong>Impacto Sensorial no Comportamento:</strong> A forma como processamos o ambiente sensorial tem um impacto direto em nossa regulação. A hipersensibilidade (sentir demais) pode levar a sobrecarga rápida por luzes, sons, texturas ou cheiros comuns, resultando em uma sensação de ameaça ou invasão que pode desencadear respostas de defesa (luta, fuga ou congelamento), às vezes vistas como agressividade. A hipossensibilidade (sentir de menos) pode levar à busca de estímulos intensos, o que também pode ser mal interpretado. Entender seu perfil sensorial (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span> ajuda) é chave para criar <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-sensory-environment')">estratégias</span> preventivas.</p>
+            </div> </div>
+            <div class="accordion-item" id="learn-masking"> <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🎭 Comunicação e Masking</span> <span class="accordion-arrow">▼</span> </button> <div class="accordion-content"> <ul> <li>Estilos de Comunicação: Variados (Não-verbal, Comunicação Alternativa/Aumentativa [AAC], ecolalia, literalidade, direto, monólogo sobre interesses).</li> <li>Dupla Empatia: Dificuldade mútua de entendimento entre neurotipos diferentes (autistas vs não-autistas). Não é falta de empatia de um lado.</li> <li>Masking (Mascaramento): Esforço consciente ou inconsciente para suprimir/camuflar traços autísticos e imitar comportamentos neurotípicos. Exaustivo, leva a burnout, ansiedade, depressão, perda de identidade.</li> </ul>
+                <p><strong>Comunicação e Comportamento:</strong> É fundamental lembrar que comportamentos desafiadores, incluindo reações verbais ou físicas intensas, podem ser uma forma de comunicação quando palavras ou outras formas falham. Dificuldades em expressar necessidades, desconforto, dor, confusão ou frustração podem levar a um acúmulo de tensão que se manifesta externamente. Reconhecer isso ajuda a buscar a causa raiz em vez de focar apenas no comportamento. Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-communicate-needs')">Estratégias: Comunicar Necessidades</span>.</p>
+            </div> </div>
+            <div class="accordion-item"> <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🏆 Pontos Fortes Comuns</span> <span class="accordion-arrow">▼</span> </button> <div class="accordion-content"> <ul> <li>Cognitivos: Atenção a detalhes, hiperfoco, memória (específica), reconhecimento de padrões, pensamento lógico/sistêmico, criatividade (pensamento "fora da caixa").</li> <li>Interesses: Expertise profunda em áreas de interesse.</li> <li>Ética/Valores: Forte senso de justiça, honestidade, lealdade, menor conformidade social (autenticidade).</li> <li>Perspectiva: Única, resiliência, capacidade de resolver problemas de forma inovadora.</li> </ul> </div> </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>💡 O Conceito "#KnowYourNormal"</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Entendendo o Seu "Normal"</h4>
+                    <p>O conceito "#KnowYourNormal" (Conheça o Seu Normal), destacado pela Ambitious about Autism, enfatiza a importância de jovens autistas (e quem os apoia) entenderem seu estado basal de bem-estar.</p>
+                    <p>Isso ajuda a reconhecer mais facilmente quando ocorrem mudanças que podem indicar um problema de saúde mental ou aumento do estresse. Embora o "normal" de uma pessoa autista possa diferir do neurotípico, não é aceitável que infelicidade ou depressão sejam vistas como o estado padrão.</p>
+                    <p>Dificuldades em identificar ou comunicar mudanças sutis podem ser um desafio. Ferramentas como este check-in podem ajudar a monitorar o estado diário e comunicar como você se sente.</p>
+                    <p><em>Fonte: Relatório #KnowYourNormal, Ambitious about Autism / CRAE</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-learn-topics" class="tab-content">
+        <h2 style="color: var(--tertiary-color);">Aprender: Tópicos Específicos</h2>
+        <p style="color: var(--tertiary-color); margin-bottom: 15px; font-size: 0.9em;">Aprofundamento em temas relevantes.</p>
+        <div>
+            <div class="accordion-item" id="learn-mental-health-checkin">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🩺 Saúde Mental, Emoções e Check-in</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Importância do Check-in para Saúde Mental</h4>
+                    <p>Pessoas autistas podem ter maior risco de problemas de saúde mental (ansiedade, depressão) devido a fatores como masking, sobrecarga sensorial, dificuldades sociais e falta de compreensão/apoio.</p>
+                    <ul>
+                        <li><strong>Alexitimia:</strong> Dificuldade em identificar/descrever emoções é comum, tornando o check-in ainda mais vital.</li>
+                        <li><strong>#KnowYourNormal:</strong> Conhecer seu estado basal ajuda a notar desvios que indicam necessidade de apoio.</li>
+                        <li><strong>Ferramenta Prática:</strong> O check-in (<span class="link-interno" onclick="openTab(event, 'tab-checkin')">aqui</span>) ajuda a nomear sensações e estados, facilitando a auto-regulação e a comunicação de necessidades.</li>
+                    </ul>
+                    <p><strong>Ligação com Regulação e Comportamento:</strong> Condições como ansiedade e depressão podem diminuir significativamente nossa capacidade de lidar com o estresse, aumentar a sensibilidade sensorial e a irritabilidade, e dificultar o manejo de demandas. Muitas vezes, um aumento em comportamentos desafiadores pode ser um sinal de que uma condição co-ocorrente está descompensada ou que o estresse geral está muito alto. Cuidar da saúde mental é crucial para a auto-regulação geral.</p>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-pda">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>⚠️ Ciclo Demanda-Ansiedade (Perfil PDA)</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Entendendo o Perfil PDA</h4>
+                    <p>PDA (Pathological Demand Avoidance / Evitação Persistente de Demandas) é considerado por muitos como um perfil dentro do espectro autista.</p>
+                    <ul>
+                        <li><strong>Característica Central:</strong> Necessidade extrema de evitar demandas e expectativas cotidianas, impulsionada por uma ansiedade profunda relacionada à perda de controle.</li>
+                        <li><strong>O Ciclo:</strong> Uma demanda (externa OU interna, como "preciso tomar banho") → Percepção de perda de controle → Ansiedade aumenta → Comportamentos de evitação (negociação, desculpas, distração, fuga, masking, meltdown/shutdown).</li>
+                        <li><strong>Não é Escolha:</strong> A evitação é uma resposta de ansiedade, não oposição intencional. A pessoa PODE querer fazer algo, mas a barreira da demanda impede.</li>
+                        <li><strong>Estratégias Chave:</strong> Foco em reduzir a percepção da demanda, aumentar a autonomia, comunicação indireta, flexibilidade. Veja as <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-pda-keys')">Chaves PDA</span>.</li>
+                    </ul>
+                    <p><em>A <span class="link-interno" onclick="openTab(event, 'tab-pda-quiz')">Auto-Reflexão PDA</span> pode ajudar a explorar essa identificação.</em></p>
+                    <p><strong>Necessidade de Previsibilidade e Mudanças:</strong> A forte necessidade de rotinas e a resistência a mudanças inesperadas são comuns no autismo e podem ser particularmente intensas no perfil PDA. Isso não é teimosia, mas sim uma busca por segurança e redução da ansiedade em um mundo que pode parecer caótico. A interrupção de rotinas, a prevenção de um comportamento repetitivo importante para a auto-regulação, ou a dificuldade em mudar o foco (inflexibilidade cognitiva) podem gerar grande estresse e ansiedade, podendo levar a colapsos (meltdowns/shutdowns) ou reações defensivas/evitativas.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🧠 Saúde Mental</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Desafios Comuns e Suporte</h4>
+                    <p>Condições como ansiedade, depressão, TOC, TDAH são mais comuns em pessoas autistas. Fatores contribuintes incluem:</p>
+                    <ul>
+                        <li>Estresse crônico por masking e navegação social.</li>
+                        <li>Sobrecarga sensorial e cognitiva.</li>
+                        <li>Dificuldades de comunicação e mal-entendidos.</li>
+                        <li>Experiências de bullying ou exclusão.</li>
+                        <li>Dificuldades com funções executivas e demandas diárias.</li>
+                        <li>Menor acesso a suporte adequado e informado sobre autismo.</li>
+                    </ul>
+                    <p><strong>Buscar Ajuda:</strong> É fundamental encontrar profissionais (terapeutas, psiquiatras) com experiência em neurodiversidade. Terapias precisam ser adaptadas (ex: TCC adaptada para autismo).</p>
+                    <p><strong>Ligação com Regulação e Comportamento:</strong> Condições como ansiedade, depressão e TDAH podem diminuir significativamente nossa capacidade de lidar com o estresse, aumentar a sensibilidade sensorial e a irritabilidade, e dificultar o manejo de demandas. Muitas vezes, um aumento em comportamentos desafiadores pode ser um sinal de que uma condição co-ocorrente está descompensada ou que o estresse geral está muito alto. Cuidar da saúde mental é crucial para a auto-regulação geral.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🪫 Burnout Autista</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Esgotamento Crônico</h4>
+                    <p>Estado de exaustão física, mental e emocional resultante do estresse crônico de viver em um mundo não adaptado, masking constante e sobrecarga.</p>
+                    <ul>
+                        <li><strong>Sintomas:</strong> Perda de habilidades (fala, função executiva), aumento da sensibilidade sensorial, fadiga extrema, retraimento social, dificuldade de concentração, aumento de shutdowns/meltdowns, perda de interesse.</li>
+                        <li><strong>Diferente de Depressão:</strong> Embora possa coexistir, o burnout está ligado ao esgotamento de recursos para lidar com as demandas da vida como autista.</li>
+                        <li><strong>Recuperação:</strong> Requer descanso radical, redução drástica de demandas, tempo em ambientes seguros e de baixo estímulo, permissão para stimming e desmascarar (unmasking). Pode levar meses ou anos.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-sleep">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🌙 Sono e Ritmos Circadianos</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Desafios e Padrões Atípicos</h4>
+                    <p>Problemas de sono são muito comuns em autistas.</p>
+                    <ul>
+                        <li><strong>Dificuldades:</strong> Adormecer, manter o sono, despertares frequentes, sentir-se descansado.</li>
+                        <li><strong>Causas Possíveis:</strong> Ansiedade, dificuldades sensoriais (ruído, luz, texturas), diferenças na produção de melatonina, problemas de interocepção (não sentir cansaço), comorbidades (TDAH, refluxo).</li>
+                        <li><strong>Ritmos Atípicos:</strong> Síndrome da Fase Atrasada do Sono (DSPS - tendência natural a dormir e acordar tarde) e Ritmo Circadiano Não-24 Horas (o ciclo sono-vigília se desloca diariamente) são mais comuns. Tentar forçar um horário "normal" pode ser prejudicial.</li>
+                        <li><strong>Estratégias:</strong> Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-sleep')">Estratégias para o Sono</span>, focando em adaptação e redução de demandas.</li>
+                    </ul>
+                    <p><strong>Ligação com Regulação e Comportamento:</strong> O sono de má qualidade ou insuficiente impacta diretamente o humor, a tolerância a frustrações, a sensibilidade sensorial e a capacidade de lidar com demandas no dia seguinte. Um aumento na irritabilidade ou em comportamentos desafiadores pode, por vezes, ser um reflexo direto de uma noite ruim de sono.</p>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-behavior-function">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🔍 Entendendo a Função do Comportamento</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Por que um comportamento acontece? A perspectiva funcional</h4>
+                    <p>Muitas vezes, comportamentos desafiadores (incluindo aqueles que parecem agressivos ou de evitação) persistem porque servem a um propósito ou função para nós, mesmo que de forma não intencional ou mal adaptativa. Pensar sobre a função pode ajudar na auto-compreensão e a encontrar estratégias mais eficazes. A Análise Funcional do Comportamento (FBA) é uma abordagem usada por profissionais, mas podemos usar a ideia central para auto-reflexão:</p>
+                    <ul>
+                        <li><strong>Antecedente (A):</strong> O que aconteceu <em>antes</em> do comportamento? (Ex: Um pedido foi feito? Um barulho alto começou? Senti uma dor? Fui interrompido?)</li>
+                        <li><strong>Comportamento (B - Behavior):</strong> Qual foi a ação específica? (Ex: Gritei? Me afastei? Recusei? Balancei o corpo mais rápido?)</li>
+                        <li><strong>Consequência (C):</strong> O que aconteceu <em>depois</em>? O que eu ganhei ou evitei? (Ex: O pedido foi retirado? Consegui ficar sozinho? Recebi atenção? Obtive um estímulo sensorial desejado?)</li>
+                    </ul>
+                    <p>As funções mais comuns costumam ser:</p>
+                    <ul>
+                        <li><strong>Atenção:</strong> Ganhar interação social (positiva ou negativa).</li>
+                        <li><strong>Tangível:</strong> Obter um item ou atividade desejada.</li>
+                        <li><strong>Fuga/Esquiva:</strong> Escapar ou evitar uma tarefa, situação, demanda ou sensação desagradável (Ex: sair de um ambiente barulhento, evitar uma tarefa difícil).</li>
+                        <li><strong>Sensorial (Automático):</strong> Obter um input sensorial prazeroso ou aliviar um desconforto sensorial (Ex: stimming para regular, coçar para aliviar uma sensação).</li>
+                    </ul>
+                    <p>Entender a possível função não justifica o comportamento, mas nos ajuda a pensar: "Qual necessidade não está sendo atendida?" ou "Como posso atender essa necessidade ou comunicar isso de forma diferente e menos custosa para mim e para os outros?". Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-communicate-needs')">Estratégias: Comunicar Necessidades</span>.</p>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-physical-health-behavior">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🩺 Saúde Física, Dor e Comportamento</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>O corpo fala: Quando o físico impacta o comportamento</h4>
+                    <p>É muito importante lembrar que mudanças no comportamento, incluindo aumento da irritabilidade, agitação ou agressividade súbita, podem ser um sinal de um problema físico não identificado ou não comunicado. Dificuldades com a interocepção (<span class="link-interno" onclick="openAccordionByTitle(event, 'Interocepção', 'tab-learn-autism')">ver aqui</span>) podem tornar mais difícil reconhecer e expressar dor ou desconforto.</p>
+                    <p>Condições comuns que podem se manifestar comportamentalmente incluem:</p>
+                    <ul>
+                        <li>Problemas gastrointestinais (constipação, refluxo, dor de estômago).</li>
+                        <li>Dores de cabeça ou enxaquecas.</li>
+                        <li>Dores de dente.</li>
+                        <li>Infecções (ouvido, garganta, urinária).</li>
+                        <li>Alergias ou problemas de pele.</li>
+                        <li>Fadiga extrema ou mal-estar geral.</li>
+                    </ul>
+                    <p>Se notar uma mudança comportamental sem causa aparente, considerar uma avaliação médica pode ser um passo importante. O <span class="link-interno" onclick="openTabAndScroll(event, 'tab-checkin', 'check-in')">Check-in</span> com rastreio de dor pode ajudar a monitorar isso.</p>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-medication-considerations">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>💊 Medicação: Considerações Gerais (Não é Conselho Médico)</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>O Papel da Medicação (Contexto Geral)</h4>
+                    <p><strong>Importante: Este aplicativo NÃO fornece aconselhamento médico. As informações a seguir são apenas para contexto geral e para ajudar em conversas com seu médico.</strong></p>
+                    <ul>
+                        <li><strong>Objetivo:</strong> Medicamentos psicotrópicos (que afetam o cérebro) às vezes são usados como parte de um plano de apoio para pessoas autistas. Geralmente, o objetivo NÃO é tratar o autismo em si, mas sim ajudar a gerenciar desafios específicos e intensos que podem ocorrer, como:
+                            <ul>
+                                <li>Irritabilidade severa, agressividade ou auto-agressão que causam risco ou sofrimento significativo.</li>
+                                <li>Condições co-ocorrentes (<span class="link-interno" onclick="openAccordionByTitle(event,'Saúde Mental', 'tab-learn-topics')">Saúde Mental</span>) como ansiedade grave, depressão, TOC ou TDAH, que podem piorar a regulação e levar a comportamentos desafiadores.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Uso Comum (Off-Label):</strong> Muitos medicamentos usados não foram aprovados especificamente para autismo em adultos (uso 'off-label'), mas são usados com base em evidências de outras condições ou populações (como crianças/adolescentes ou outras condições psiquiátricas).</li>
+                        <li><strong>Sensibilidade Aumentada:</strong> É relatado que pessoas autistas podem ser mais sensíveis aos efeitos colaterais dos medicamentos ou ter respostas diferentes das esperadas. Por isso, médicos experientes geralmente recomendam:
+                            <ul>
+                                <li>Começar com doses muito baixas.</li>
+                                <li>Aumentar a dose muito lentamente ('start low, go slow').</li>
+                                <li>Monitorar de perto tanto os benefícios quanto os efeitos colaterais.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Não é a Primeira Linha:</strong> Geralmente, estratégias não-medicamentosas (terapia comportamental, ajustes ambientais, estratégias sensoriais, desenvolvimento de habilidades - como as discutidas <span class="link-interno" onclick="openTab(event, 'tab-strategies')">aqui</span>) são tentadas primeiro. A medicação é considerada quando essas estratégias não são suficientes, ou quando a intensidade do comportamento impede o engajamento em outras terapias ou representa um risco imediato.</li>
+                        <li><strong>Tratamento Combinado:</strong> Idealmente, a medicação é usada em conjunto com outras formas de apoio (psicossocial, ambiental).</li>
+                        <li><strong>Converse com seu Médico:</strong> É essencial ter um diálogo aberto com um médico experiente em autismo sobre os potenciais benefícios, riscos, efeitos colaterais e alternativas. Se você sente que pode ser mais sensível a efeitos colaterais, mencione isso.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>🔬 Prioridades de Pesquisa sobre PDA</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Principais Questões de Pesquisa sobre PDA (PDA Society, 2023)</h4>
+                    <p>A PDA Society identificou áreas chave onde mais pesquisa é necessária para melhorar o entendimento e o apoio. As prioridades incluem (sem ordem específica):</p>
+                    <ul style="list-style: disc; padding-left: 18px; font-size: 0.9em;">
+                        <li>Origens do perfil PDA e natureza da evitação de demandas.</li>
+                        <li>Experiência diária de viver com PDA.</li>
+                        <li>Fatores que impactam a qualidade de vida e como melhorar os resultados.</li>
+                        <li>Como melhor informar profissionais e adaptar serviços às necessidades PDA.</li>
+                        <li>Como entender melhor as necessidades e pontos fortes individuais.</li>
+                        <li>Como melhor definir e descrever PDA.</li>
+                        <li>Abordagens relacionais e terapêuticas que ajudam (ou prejudicam).</li>
+                        <li>Ambientes e abordagens de aprendizado eficazes.</li>
+                        <li>Como as necessidades PDA mudam ao longo do tempo.</li>
+                    </ul>
+                    <p style="font-size: 0.8em; margin-top: 8px;"><em>Fonte: Relatório PDA Research Priority Setting, PDA Society (2023). Entender estas prioridades ajuda a contextualizar o conhecimento atual e as estratégias de apoio.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-learn-social" class="tab-content">
+        <h2 style="color: var(--tertiary-color);">Aprender: Vida Social & Direitos</h2>
+        <p style="color: var(--tertiary-color); margin-bottom: 15px; font-size: 0.9em;">Relacionamentos, comunidade, identidade, direitos.</p>
+        <div>
+            <div class="accordion-item" id="learn-relationships">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>💑 Relacionamentos / Casamento (Neurodiversidade)</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Navegando Relacionamentos Neurodiversos</h4>
+                    <p>Relacionamentos onde um ou ambos os parceiros são neurodivergentes (ND) podem ter dinâmicas únicas.</p>
+                    <ul>
+                        <li><strong>Desafios Comuns:</strong> Diferenças na comunicação (literal vs. implícito), necessidades sociais (introversão vs. extroversão), processamento sensorial, expressão emocional, funções executivas (planejamento, organização).</li>
+                        <li><strong>Síndrome de Cassandra (Controverso):</strong> Termo usado (às vezes de forma problemática) para descrever a experiência de um parceiro neurotípico (NT) se sentindo invalidado ou não acreditado ao descrever desafios com um parceiro ND (especialmente antes do diagnóstico). É crucial evitar culpar o parceiro ND.</li>
+                        <li><strong>Chaves para o Sucesso:</strong> Comunicação explícita e clara, compreensão mútua das necessidades (ex: necessidade de tempo sozinho do parceiro ND), validação das experiências de ambos, busca por diagnóstico/apoio profissional (se aplicável), divisão de tarefas baseada em pontos fortes, encontrar interesses comuns.</li>
+                        <li><strong>Dupla Empatia:</strong> Lembrar que a dificuldade de entendimento é mútua entre NT e ND.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>👥 Relacionamentos</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Amizades e Conexões</h4>
+                    <p>Autistas formam relacionamentos profundos e significativos, mas a forma pode diferir.</p>
+                    <ul>
+                        <li><strong>Preferências Comuns:</strong> Interações 1-a-1 ou pequenos grupos, foco em interesses compartilhados, comunicação direta e honesta, lealdade.</li>
+                        <li><strong>Desafios:</strong> Navegar conversas informais ("small talk"), interpretar sinais sociais não-verbais, iniciar/manter contato, lidar com ambientes sociais barulhentos/caóticos, risco de ser explorado devido à sinceridade.</li>
+                        <li><strong>Encontrando Sua Tribo:</strong> Buscar grupos baseados em interesses (online ou offline), conectar-se com outras pessoas neurodivergentes que podem ter experiências e estilos de comunicação semelhantes.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>🤝 Fazendo Amigos</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Dicas Práticas (Adapte ao seu estilo)</h4>
+                    <ul>
+                        <li><strong>Use Interesses Especiais:</strong> Participe de clubes, grupos ou fóruns relacionados aos seus hiperfocos. A paixão compartilhada facilita a conexão.</li>
+                        <li><strong>Comece Online:</strong> Ambientes online podem reduzir a pressão da interação face-a-face inicial.</li>
+                        <li><strong>Prepare "Roteiros Sociais":</strong> Ter algumas frases prontas para iniciar conversas ou responder a perguntas comuns pode ajudar a reduzir a ansiedade.</li>
+                        <li><strong>Seja Você Mesmo:</strong> Masking excessivo pode atrair pessoas incompatíveis e é exaustivo. Procure por quem aprecia sua autenticidade.</li>
+                        <li><strong>Observe e Escute:</strong> Tente entender a dinâmica do grupo antes de interagir muito.</li>
+                        <li><strong>Qualidade sobre Quantidade:</strong> É melhor ter poucos amigos genuínos do que muitos superficiais.</li>
+                        <li><strong>Peça Clareza:</strong> Não tenha medo de pedir para explicarem algo que não entendeu (ex: "Não entendi a piada, pode explicar?").</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>✨ Identidade Positiva</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Abraçando a Neurodiversidade</h4>
+                    <p>Construir uma identidade autista positiva envolve:</p>
+                    <ul>
+                        <li><strong>Autoconhecimento:</strong> Entender seus próprios traços, pontos fortes e desafios (<span class="link-interno" onclick="openTab(event, 'tab-learn-autism')">Aprender</span>).</li>
+                        <li><strong>Desconstruir Estigma:</strong> Questionar narrativas negativas sobre autismo (modelo médico vs. social/neurodiversidade).</li>
+                        <li><strong>Conectar-se com a Comunidade:</strong> Ouvir e compartilhar experiências com outros autistas valida sua vivência.</li>
+                        <li><strong>Focar em Pontos Fortes:</strong> Reconhecer e valorizar suas habilidades e talentos únicos.</li>
+                        <li><strong>Unmasking (Desmascarar):</strong> Permitir-se ser autêntico, reduzindo o masking em ambientes seguros, o que pode melhorar o bem-estar.</li>
+                        <li><strong>Auto-Advocacia:</strong> Aprender a comunicar suas necessidades e defender seus direitos (<span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-self-advocacy')">Estratégias</span>).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>❤️ Identidade LGBTQ+</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Intersecção Comum</h4>
+                    <p>Há uma sobreposição significativa entre as comunidades autista e LGBTQIA+. Pessoas autistas têm maior probabilidade de se identificarem como não-heterossexuais e/ou transgênero/gênero diverso em comparação com a população neurotípica.</p>
+                    <ul>
+                        <li><strong>Possíveis Razões:</strong> Menor conformidade com normas sociais, pensamento mais literal sobre identidade, maior introspecção.</li>
+                        <li><strong>Desafios Duplos:</strong> Enfrentar estigma e discriminação relacionados a ambas as identidades (capacitismo e homofobia/transfobia).</li>
+                        <li><strong>Comunidade e Apoio:</strong> Encontrar espaços que acolham ambas as identidades é crucial para o bem-estar.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-rights">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>⚖️ Direitos e Suporte</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Conhecendo Seus Direitos (Exemplos Gerais - Verifique Legislação Local)</h4>
+                    <p>Pessoas autistas são frequentemente protegidas por leis antidiscriminação (como pessoas com deficiência).</p>
+                    <ul>
+                        <li><strong>Educação:</strong> Direito a adaptações razoáveis (tempo extra, ambiente calmo para provas, apoio especializado).</li>
+                        <li><strong>Trabalho:</strong> Direito a não ser discriminado na contratação/emprego e a solicitar adaptações razoáveis (instruções claras, ambiente sensorial ajustado, flexibilidade de horário).</li>
+                        <li><strong>Saúde:</strong> Direito a acesso a serviços de saúde e a adaptações na comunicação/atendimento.</li>
+                        <li><strong>Benefícios Sociais:</strong> Dependendo da legislação local e do impacto do autismo na capacidade funcional, pode haver direito a benefícios (ex: BPC no Brasil, para baixa renda).</li>
+                    </ul>
+                    <p><strong>Onde Buscar Ajuda:</strong> Associações de autismo, Defensoria Pública, advogados especializados, centros de apoio à pessoa com deficiência.</p>
+                    <ul>
+                        <li><strong>Direito à Comunicação:</strong> Toda pessoa tem o direito de se comunicar. Isso inclui o direito a usar formas de comunicação alternativas ou aumentativas (AAC) se a fala não for suficiente ou confiável. Comportamento também é comunicação.</li>
+                        <li><strong>Direito à Autonomia:</strong> Você tem o direito de participar das decisões sobre sua própria vida e tratamento ("Nada Sobre Nós Sem Nós"). Busque apoio que respeite sua autonomia e considere modelos como a Tomada de Decisão Apoiada, se necessário, como alternativa à tutela.</li>
+                        <li><strong>Cuidado com Abordagens Coercitivas:</strong> Esteja ciente de que práticas como contenção (física ou química) ou punição excessiva são consideradas antiéticas e traumatizantes por muitas organizações de autistas. Busque abordagens baseadas em apoio positivo, compreensão da função do comportamento e respeito.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item" id="learn-self-advocacy">
+                <button class="accordion-button" onclick="toggleAccordion(this)"> <span>📣 Auto-Advocacia (Mais)</span> <span class="accordion-arrow">▼</span> </button>
+                <div class="accordion-content">
+                    <h4>Empoderando-se para Comunicar Necessidades</h4>
+                    <p>Auto-advocacia é a habilidade de entender suas necessidades e comunicá-las efetivamente para obter o suporte necessário.</p>
+                    <ul>
+                        <li><strong>Por que é Importante?</strong> Ajuda a garantir que suas necessidades sejam atendidas na escola, trabalho, saúde e relacionamentos; promove autonomia e respeito; combate o estigma.</li>
+                        <li><strong>Passos Fundamentais:</strong>
+                            <ol>
+                                <li><strong>Entender-se:</strong> Quais são seus gatilhos sensoriais? Como você se comunica melhor? Quais adaptações ajudam? (<span class="link-interno" onclick="openTab(event, 'tab-checkin')">Check-in</span> ajuda).</li>
+                                <li><strong>Conhecer Seus Direitos:</strong> (<span class="link-interno" onclick="openAccordionByTitle(event,'Direitos e Suporte', 'tab-learn-social')">Info Direitos</span>).</li>
+                                <li><strong>Saber o Que Pedir:</strong> Seja específico sobre a adaptação necessária.</li>
+                                <li><strong>Escolher Como e Quando Comunicar:</strong> Pode ser verbalmente, por escrito, com apoio de alguém. Escolha um momento calmo. Veja <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-communicate-needs')">Comunicar Necessidades</span>.</li>
+                                <li><strong>Praticar:</strong> Comece em situações de baixo risco.</li>
+                            </ol>
+                        </li>
+                        <li>Veja também: <span class="link-interno" onclick="openTabAndScroll(event, 'tab-strategies', 'strategy-self-advocacy')">Estratégias de Auto-Advocacia</span>.</li>
+                    </ul>
+                    <ul>
+                        <li><strong>Direito à Autonomia:</strong> Lembre-se que você tem o direito de participar das decisões sobre sua própria vida e tratamento. A auto-advocacia é um exercício dessa autonomia.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-gemini-learning" class="tab-content">
+        <h2 style="color: var(--primary-color);">🚀 Aprender Gemini: Criando Exercícios ESL</h2>
+        <p style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.9em;">Guia passo-a-passo para usar o Gemini na criação de exercícios interativos em HTML.</p>
+        <div>
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 1: Escolha da Língua e Estrutura Básica do Comando</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>Para obter os melhores resultados técnicos do Gemini ao pedir código (HTML, CSS, JavaScript), a recomendação é usar **Inglês** nos comandos[cite: 59, 63]. Isso minimiza ambiguidades ao descrever funcionalidades interativas. Você pode usar Português para o contexto geral (objetivo pedagógico, nível do aluno)[cite: 61]. O mais importante é ser **específico** no seu pedido[cite: 67].</p>
+                    <p>Um bom comando inicial deve incluir:</p>
+                    <ul>
+                        <li>**Objetivo Claro:** O que você quer criar (ex: "Gerar um exercício interativo...")[cite: 68].</li>
+                        <li>**Formato:** Especificar "em HTML" e se precisa de "CSS" e "JavaScript"[cite: 68, 70].</li>
+                        <li>**Tipo de Exercício:** Qual o formato (ex: "...de múltipla escolha", "...de arrastar e soltar")[cite: 71].</li>
+                    </ul>
+                    <h4>Comando Exemplo (Inglês - Múltipla Escolha Simples)</h4>
+                    <pre><code class="prompt-code">Act as an expert web developer for ESL exercises. Generate simple HTML and CSS for a multiple-choice question.
+Display the question: "What is the capital of England?"
+Display four options using radio buttons:
+a) Paris
+b) London (Correct Answer)
+c) Rome
+d) Madrid
+Do not include JavaScript interactivity yet. Provide the HTML and basic CSS separately.</code></pre>
+                    <h4>Como Testar</h4>
+                    <p>Copie o comando acima e cole na sua interface do Gemini (chat ou Google AI Studio). Analise o código gerado. Salve o HTML/CSS como um arquivo `.html` e abra no navegador para visualizar a estrutura.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 2: Detalhando Interatividade e Conteúdo</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>Após a estrutura básica, detalhe a interatividade. Explique passo a passo como o usuário interage e qual feedback ele deve receber (visual, texto)[cite: 74, 166]. Forneça o conteúdo (perguntas, textos, respostas) ou peça ao Gemini para criá-lo[cite: 72, 79, 80, 168]. Pedir feedback imediato após a seleção é uma interatividade comum[cite: 74].</p>
+                    <h4>Comando Exemplo (Inglês - Múltipla Escolha com Feedback Imediato)</h4>
+                    <pre><code class="prompt-code">Based on the previous HTML, now add vanilla JavaScript interactivity.
+When the user selects a radio button:
+1. Immediately check if the selected value ('London') is correct.
+2. Display feedback in a new paragraph element (id 'feedback-message') below the options.
+3. Show 'Correct!' in green if the answer is 'London'.
+4. Show 'Incorrect. Try again.' in red if the answer is wrong.
+5. Add basic CSS classes '.correct-feedback' (color: green) and '.incorrect-feedback' (color: red).
+Provide the complete HTML with embedded CSS and JavaScript, or provide HTML, CSS, and JS blocks separately.</code></pre>
+                    <h4>Questão de Múltipla Escolha (Entendimento)</h4>
+                    <p>Para tornar um comando mais preciso ao pedir interatividade, qual destes elementos é MAIS importante incluir?</p>
+                    <ol type="a">
+                        <li>Apenas o tipo de exercício (ex: múltipla escolha).</li>
+                        <li>O nível do aluno (ex: B1).</li>
+                        <li>Uma descrição passo a passo de como a interação deve funcionar e qual feedback dar.</li>
+                        <li>O número exato de perguntas.</li>
+                    </ol>
+                    <p><em>Resposta Correta: (c)</em></p>
+                    <h4>Como Testar</h4>
+                    <p>Use o comando no Gemini (pode colar o HTML do passo anterior no prompt ou referenciar "o código anterior"). Salve o novo código como `.html` e teste a interatividade (clicar nas opções e ver o feedback) no navegador.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 3: Criando Outros Tipos (Abas, Preencher Lacunas)</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>O Gemini pode gerar diversos layouts. Abas (`tabs`) organizam conteúdo relacionado[cite: 7, 32, 261]. Preencher Lacunas (`fill-in-the-blanks`) é ideal para gramática e vocabulário[cite: 16, 45, 314]. Lembre-se sempre de especificar a lógica de verificação das respostas.</p>
+                    <h4>Comando Exemplo (Inglês - Preencher Lacunas com Verificação)</h4>
+                    <pre><code class="prompt-code">Act as an expert web developer for ESL exercises. Generate HTML, CSS, and vanilla JavaScript for a fill-in-the-blanks exercise for intermediate learners.
+HTML: Display the sentence "She ___ (go) to the library every day." Replace '___ (go)' with an input field: &lt;input type="text" id="blank1" size="5"&gt;. Add a button with id="check-button" and text "Check Answer". Add a feedback paragraph with id="feedback1".
+JavaScript: When the user clicks the 'Check Answer' button, get the value from input#blank1. Compare it (case-insensitive) to the correct answer "goes". Display "Correct!" (green) or "Incorrect, the answer is 'goes'." (red) in #feedback1.
+Provide the complete code (HTML, CSS for feedback colors, JS).</code></pre>
+                    <h4>Como Testar</h4>
+                    <p>Copie o comando, cole no Gemini, salve o código resultante como `.html` e teste a funcionalidade de preencher a lacuna e clicar no botão "Check Answer" no seu navegador.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 4: Usando Atributos `data-*`</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>Para exercícios mais interativos (combinar, arrastar/soltar), usar atributos `data-*` no HTML é muito útil[cite: 128, 178]. Eles permitem guardar informações importantes (resposta correta, ID de par, categoria) diretamente nos elementos HTML, facilitando o acesso e a lógica no JavaScript[cite: 129, 180]. Peça explicitamente ao Gemini para usá-los.</p>
+                    <h4>Comando Exemplo (Inglês - Matching com `data-*`)</h4>
+                    <pre><code class="prompt-code">Act as an expert web developer. Generate HTML, CSS, and JS for a simple matching exercise (click pairs).
+HTML: Create two lists (ul).
+List 1 (id 'list1'): &lt;li&gt;&lt;span class='match-item' data-pair-id='fruit'&gt;Apple&lt;/span&gt;&lt;/li&gt;, &lt;li&gt;&lt;span class='match-item' data-pair-id='color'&gt;Banana&lt;/span&gt;&lt;/li&gt;
+List 2 (id 'list2'): &lt;li&gt;&lt;span class='match-item' data-pair-id='fruit'&gt;Fruit&lt;/span&gt;&lt;/li&gt;, &lt;li&gt;&lt;span class='match-item' data-pair-id='color'&gt;Yellow&lt;/span&gt;&lt;/li&gt;
+CSS: Style .match-item (cursor: pointer, border). Add class .selected (background: yellow) and .matched (background: lightgreen, cursor: default).
+JavaScript:
+1. Store the first clicked item. Add .selected class.
+2. On second click:
+   - If data-pair-id matches the first item's AND it's not the same item: Add .matched class to both, make them unclickable. Remove .selected. Reset first click storage.
+   - If no match: Remove .selected from the first item. Reset first click storage.
+3. Ignore clicks on .matched items.
+Provide complete code.</code></pre>
+                    <h4>Questão de Múltipla Escolha (Entendimento)</h4>
+                    <p>Qual a principal vantagem de usar atributos `data-*` em exercícios HTML interativos?</p>
+                    <ol type="a">
+                        <li>Deixar o HTML mais colorido.</li>
+                        <li>Armazenar informações diretamente nos elementos HTML para fácil acesso pelo JavaScript.</li>
+                        <li>Funciona apenas para exercícios de arrastar e soltar.</li>
+                        <li>Substituir a necessidade de CSS.</li>
+                    </ol>
+                    <p><em>Resposta Correta: (b)</em></p>
+                    <h4>Como Testar</h4>
+                    <p>Teste o comando no Gemini. Salve o HTML resultante e verifique no navegador se clicar nos pares corretos os marca como combinados e se clicar em pares incorretos não faz a combinação.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 5: Exercícios Mais Complexos (Drag/Drop, Flashcards)</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>Com os conceitos anteriores, podemos pedir exercícios mais dinâmicos como Arrastar e Soltar (`drag-and-drop`) para ordenar frases [cite: 4, 29, 210] ou combinar itens[cite: 3, 28, 189], e também Flashcards interativos[cite: 10, 34, 291]. Detalhar a lógica dos eventos de drag/drop (`dragstart`, `dragover`, `drop`) [cite: 119, 166, 202, 203, 204] e a funcionalidade dos flashcards (virar, navegar) é essencial[cite: 292].</p>
+                    <h4>Comando Exemplo (Inglês - Drag/Drop Ordenar Frase com `data-*`)</h4>
+                    <pre><code class="prompt-code">Act as an expert web developer. Generate HTML, CSS, and JS for a drag-and-drop sentence ordering activity.
+Target Sentence: "I learn English every day."
+HTML:
+1. Div id='fragment-pool': Contains draggable spans (class 'frag'): &lt;span class='frag' draggable='true' data-order='1'&gt;I&lt;/span&gt;, &lt;span class='frag' draggable='true' data-order='4'&gt;day.&lt;/span&gt;, &lt;span class='frag' draggable='true' data-order='2'&gt;learn English&lt;/span&gt;, &lt;span class='frag' draggable='true' data-order='3'&gt;every&lt;/span&gt;
+2. Div id='drop-zone' (acts as drop target and container for ordered fragments).
+3. Button id='check-order'.
+4. Paragraph id='order-feedback'.
+CSS: Style .frag (draggable, margin, border). Style #drop-zone (drop area, min-height, border). Add .correct/.incorrect feedback styles.
+JavaScript:
+1. Implement dragstart (store data-order using dataTransfer.setData).
+2. Implement dragover on #drop-zone (preventDefault to allow drop).
+3. Implement drop on #drop-zone (preventDefault, get data-order, appendChild the dragged element).
+4. (Optional extra: Allow reordering within #drop-zone).
+5. On #check-order click: Get all fragments inside #drop-zone. Check if their data-order attributes are sequential (1, 2, 3, 4). Display Correct/Incorrect in #order-feedback.
+Provide complete code.</code></pre>
+                    <h4>Como Testar</h4>
+                    <p>Use o comando no Gemini. Salve o HTML e teste no navegador: consegue arrastar os fragmentos para a zona de soltar? Consegue reordená-los (se implementado)? O botão de checar dá o feedback correto?</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <span>Passo 6: Testando e Refinando o Código</span>
+                    <span class="accordion-arrow">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <h4>Explicação</h4>
+                    <p>O código do Gemini é um ponto de partida, mas quase sempre precisa de testes e ajustes[cite: 91, 174, 336]. É **fundamental** testar tudo[cite: 337]!</p>
+                    <ol>
+                        <li>Salve o código gerado (HTML, CSS, JS) em arquivos.</li>
+                        <li>Abra o arquivo `.html` no navegador.</li>
+                        <li>Abra as Ferramentas do Desenvolvedor (F12) e verifique o **Console** por erros em vermelho[cite: 340].</li>
+                        <li>Interaja com o exercício como um aluno faria[cite: 341, 342]. Tudo funciona como esperado? Teste casos incomuns[cite: 343].</li>
+                        <li>Se encontrar erros ou quiser mudanças, peça ao Gemini para corrigir, sendo específico[cite: 89, 90, 345]: "No código anterior, corrija o erro [mensagem de erro]" ou "Modifique a função X para fazer Y".</li>
+                    </ol>
+                    <h4>Como Testar os Comandos Desta Sessão</h4>
+                    <p>Como não posso criar um link direto para executar o comando no seu Gemini, o processo é manual:</p>
+                    <ol>
+                        <li>Copie o bloco de código do "Comando Exemplo" que deseja testar.</li>
+                        <li>Cole na sua interface do Gemini (Chat, Google AI Studio, etc.).</li>
+                        <li>Peça para gerar o código correspondente (HTML, CSS, JS).</li>
+                        <li>Copie o código gerado.</li>
+                        <li>Cole num editor de texto simples (como Bloco de Notas, TextEdit) ou um editor de código (VS Code).</li>
+                        <li>Salve o arquivo com a extensão `.html`.</li>
+                        <li>Abra esse arquivo `.html` no navegador do seu celular ou computador para ver e testar o exercício interativo.</li>
+                    </ol>
+                    <p>Lembre-se: A iteração é chave! [cite: 91, 175]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab-pda-quiz" class="tab-content">
+        <h2 style="color: var(--pda-quiz-text);">Auto-Reflexão: Perfil PDA</h2>
+        <div class="pda-disclaimer"><p><strong>⚠️ IMPORTANTE:</strong> APENAS para auto-reflexão. <strong>NÃO é diagnóstico</strong>.</p><p style="font-size: 0.8em;">Características PDA são complexas. Se houver identificação e sofrimento/dificuldades, busque avaliação profissional experiente em autismo e PDA.</p></div>
+        <p style="color: var(--pda-quiz-text); margin-bottom: 15px; font-size: 0.9em;">Pense como você se sente/age na maioria das vezes ou sob estresse.</p>
+        <div id="pda-quiz-container"></div>
+        <div id="pda-quiz-controls" style="text-align:center; margin-top: 15px;"><button id="start-pda-quiz-btn" onclick="startPdaQuiz()" class="action-button" style="background-color: var(--warning-color);">Iniciar Reflexão</button></div>
+        <div id="pda-quiz-results" class="hidden"></div>
+    </div>
+
+    <div id="tab-had-quiz" class="tab-content">
+        <h2 style="color: var(--had-quiz-text);">Escala HAD: Auto-Reflexão Ansiedade/Depressão</h2>
+        <div class="had-disclaimer">
+            <p><strong>⚠️ IMPORTANTE:</strong> Esta é uma ferramenta de auto-reflexão baseada na Escala Hospitalar de Ansiedade e Depressão (HADS). <strong>NÃO substitui um diagnóstico clínico</strong>.</p>
+            <p style="font-size: 0.8em;">Os resultados indicam apenas a *probabilidade* da presença de sintomas. Se você se identificar com os sintomas ou os resultados indicarem níveis "possíveis" ou "prováveis", é <strong>fundamental buscar avaliação e orientação de um profissional de saúde qualificado</strong> (médico, psicólogo, psiquiatra).</p>
+        </div>
+        <p style="color: var(--had-quiz-text); margin-bottom: 15px; font-size: 0.9em;">Leia cada item e marque a resposta que melhor descreve como você tem se sentido na última semana.</p>
+
+        <div id="had-quiz-container">
+            </div>
+
+        <div id="had-quiz-controls" style="text-align:center; margin-top: 15px;">
+             <button id="start-had-quiz-btn" onclick="startHadQuiz()" class="action-button" style="background-color: var(--tertiary-color);">Iniciar Reflexão HAD</button>
+         </div>
+
+         <div id="had-quiz-results" class="hidden">
+             </div>
+    </div>
+
+    <div id="tab-inspiration" class="tab-content">
+        <h2 style="color: var(--inspiration-color);">💡 Inspiração: Histórias Vividas</h2>
+        <p style="color: var(--inspiration-color); margin-bottom: 15px; font-size: 0.9em;">Exemplos de experiências e desafios enfrentados por pessoas no espectro autista.</p>
+        <div>
+            <div id="case-study-tony" class="content-section">
+                <h3>👤 Estudo de Caso: Tony Attwood (Exemplo Clássico - Resumo)</h3>
+                <div class="content-section-body">
+                    <p>Tony Attwood, psicólogo clínico renomado, frequentemente descreve casos clássicos para ilustrar características do autismo (anteriormente Síndrome de Asperger).</p>
+                    <p><strong>Exemplo Fictício Baseado em Casos Comuns:</strong> "Daniel", um menino com inteligência na média ou acima, mas com dificuldades notáveis:</p>
+                    <ul>
+                        <li><strong>Interesses Intensos:</strong> Focado em dinossauros, sabe tudo sobre eles, mas tem dificuldade em falar de outros assuntos.</li>
+                        <li><strong>Interação Social:</strong> Quer ter amigos, mas não sabe como iniciar/manter conversas; pode ser muito direto ou não perceber dicas sociais.</li>
+                        <li><strong>Sensibilidade Sensorial:</strong> Incomoda-se com luzes fluorescentes e sons altos na escola.</li>
+                        <li><strong>Rotina:</strong> Fica muito ansioso se a rotina muda inesperadamente.</li>
+                        <li><strong>Comunicação:</strong> Interpreta a linguagem literalmente; dificuldade com metáforas ou sarcasmo.</li>
+                    </ul>
+                    <p><em>Estes exemplos ajudam a entender como diferentes características podem se manifestar no dia a dia.</em></p>
+                </div>
+            </div>
+            <div id="case-study-luke" class="content-section">
+                <h3>👤 Relato: Luke Jackson ("Freaks, Geeks and Asperger Syndrome" - Resumo)</h3>
+                <div class="content-section-body">
+                    <p>Luke Jackson escreveu este livro como adolescente, compartilhando sua perspectiva sobre viver com Síndrome de Asperger (termo agora geralmente incluído em Transtorno do Espectro Autista).</p>
+                    <p><strong>Temas Principais do Livro:</strong></p>
+                    <ul>
+                        <li><strong>Visão Interna:</strong> Explica como percebe o mundo, incluindo sobrecarga sensorial e confusão com regras sociais implícitas.</li>
+                        <li><strong>Desafios Escolares:</strong> Dificuldades com bullying, ruído, organização e a pressão social.</li>
+                        <li><strong>Família e Amigos:</strong> A importância do apoio familiar e os desafios/sucessos em fazer amigos.</li>
+                        <li><strong>Interesses Especiais:</strong> Como seus interesses o ajudam a lidar com o mundo e a conectar-se com outros.</li>
+                        <li><strong>Humor e Honestidade:</strong> O livro é escrito com franqueza e humor, oferecendo conselhos para outros jovens no espectro, pais e professores.</li>
+                    </ul>
+                    <p><em>Relatos em primeira pessoa como o de Luke são valiosos para entender a experiência vivida do autismo.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

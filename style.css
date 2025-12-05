@@ -1,0 +1,203 @@
+/* --- Configurações Globais --- */
+:root {
+    --primary-color: #4f46e5; --primary-hover: #4338ca;
+    --secondary-color: #10b981; --tertiary-color: #0ea5e9;
+    --light-bg: #f8fafc; --text-dark: #1f2937; --text-medium: #4b5563;
+    --text-light: #6b7280; --border-color: #e5e7eb; --danger-color: #dc2626;
+    --warning-color: #f59e0b; --success-color: #16a34a;
+    --pda-quiz-bg: #fffbeb; --pda-quiz-border: #fef3c7; --pda-quiz-text: #b45309;
+    --inspiration-color: #f59e0b; /* Cor para a aba Inspiração/Relatos */
+    --had-quiz-bg: #f0f9ff; /* Fundo similar às abas de aprender */
+    --had-quiz-border: #bae6fd; /* Borda similar */
+    --had-quiz-text: #0369a1; /* Texto similar */
+}
+html { scroll-behavior: smooth; }
+body {
+    font-family: sans-serif; background-color: #f3f4f6; color: var(--text-dark);
+    margin: 0; padding: 10px; line-height: 1.4; font-size: 15px; /* Base font size */
+}
+.container {
+    max-width: 980px; margin: 10px auto; background-color: #e5e7eb;
+    border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); overflow: hidden;
+}
+h1, h2, h3, h4 { margin: 0.8em 0 0.4em 0; }
+h1 { font-size: 1.6em; color: var(--primary-color); text-align: center; padding-top: 15px; }
+h2 { font-size: 1.3em; color: var(--primary-hover); border-bottom: 1px solid var(--border-color); padding-bottom: 4px; margin-bottom: 12px; }
+h3 { font-size: 1.1em; color: var(--tertiary-color); }
+h4 { font-size: 1em; font-weight: bold; color: var(--secondary-color); margin-bottom: 0.4em; }
+/* Estilo para h4 dentro da seção de inspiração e acordeões de aprendizado */
+#tab-inspiration h4, #tab-learn-social .accordion-content h4, #tab-learn-topics .accordion-content h4, #tab-learn-autism .accordion-content h4 {
+     color: var(--pda-quiz-text); /* Usa a cor do texto do quiz PDA */
+     font-size: 1.05em;
+     margin-top: 1em;
+     margin-bottom: 0.5em;
+     border-bottom: 1px dashed var(--pda-quiz-border);
+     padding-bottom: 2px;
+}
+p { margin-bottom: 0.8em; }
+ul { padding-left: 18px; margin-bottom: 0.8em; }
+li { margin-bottom: 0.4em; }
+button, input, textarea, label { font-family: inherit; font-size: 0.95em; vertical-align: middle; }
+
+/* --- Botões Simplificados --- */
+.option-button, .action-button, .tab-button, .collapsible-button, .accordion-button, .quiz-option-button, .pda-quiz-option-button, .had-quiz-option-button {
+    padding: 6px 10px; margin: 4px 2px; border: 1px solid var(--border-color);
+    border-radius: 3px; background-color: white; color: var(--text-medium); cursor: pointer;
+    text-align: left; display: inline-block;
+     /* Sem transições */
+}
+.option-button:hover, .action-button:hover, .tab-button:hover, .collapsible-button:hover, .accordion-button:hover, .quiz-option-button:hover, .pda-quiz-option-button:hover, .had-quiz-option-button:hover {
+    background-color: #f0f0f0; border-color: #cccccc;
+}
+.option-button.selected, .pda-quiz-option-button.selected, .had-quiz-option-button.selected {
+    background-color: var(--primary-color); color: white; border-color: var(--primary-hover); font-weight: bold;
+}
+.action-button {
+    background-color: var(--primary-color); color: white; font-weight: bold; text-align: center;
+}
+.action-button:hover { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+button:disabled { opacity: 0.6; cursor: not-allowed; background-color: #eeeeee !important; }
+
+/* --- Inputs e Labels Simplificados --- */
+.question-block {
+    margin-bottom: 15px; padding: 12px; background-color: white;
+    border-radius: 4px; border: 1px solid var(--border-color);
+}
+label.block-label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--primary-hover); font-size: 1.05em; }
+label.input-label { display: block; margin-bottom: 4px; color: var(--text-medium); font-size: 0.9em; }
+input[type=range] { width: 95%; max-width: 280px; cursor: pointer; height: 6px; accent-color: var(--primary-color); margin-top: 5px; }
+.range-value-display { font-size: 0.8em; color: var(--primary-color); font-weight: bold; margin-left: 5px; }
+input[type=text], textarea {
+    border: 1px solid #ccc; border-radius: 3px; padding: 6px; width: 98%;
+    max-width: 380px; box-sizing: border-box; margin-bottom: 8px;
+}
+textarea { min-height: 70px; }
+input[type=text]:focus, textarea:focus { outline: 1px solid var(--primary-color); border-color: var(--primary-color); }
+
+/* --- Abas (Tabs) Simplificadas --- */
+.tabs-container {
+    background-color: #e5e7eb; padding: 4px 10px 0 10px; border-bottom: 1px solid #d1d5db;
+    position: sticky; top: 0; z-index: 10; white-space: nowrap; overflow-x: auto; /* Permite rolagem se não couber */
+}
+.tab-button {
+    border-bottom: none; border-radius: 3px 3px 0 0; position: relative; bottom: -1px;
+    background-color: transparent; font-size: 0.85em; margin-right: 1px;
+}
+.tab-button.active {
+    background-color: white; color: var(--primary-color); border-color: #d1d5db;
+    border-bottom-color: white; font-weight: bold;
+}
+/* Cor específica para aba de Inspiração Ativa */
+.tab-button.active[onclick*="tab-inspiration"] {
+     background-color: white; color: var(--inspiration-color); border-color: #d1d5db;
+     border-bottom-color: white; font-weight: bold;
+}
+.tab-content { display: none; background-color: white; border: 1px solid #d1d5db; border-top: none; padding: 15px 20px 25px 20px; border-radius: 0 0 6px 6px; }
+.tab-content.active { display: block; }
+
+/* --- Colapsáveis / Acordeão Simplificados --- */
+.collapsible-container, .content-section, .accordion-item {
+    background-color: var(--light-bg); border: 1px solid var(--border-color); border-radius: 3px;
+    margin-bottom: 12px; overflow: hidden;
+}
+.collapsible-button, .accordion-button {
+    background-color: white; width: 100%; text-align: left; padding: 8px 12px; border: none;
+    border-bottom: 1px solid var(--border-color); font-weight: bold; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+     /* Sem transições */
+}
+.content-section h3 { background-color: var(--tertiary-color); color: white; padding: 8px 12px; margin: 0; border-bottom: 1px solid var(--border-color); font-size: 1.05em; }
+.collapsible-button:hover, .accordion-button:hover { background-color: #f0f0f0; }
+.collapsible-content, .accordion-content, .content-section-body {
+    padding: 0 12px; max-height: 0; overflow: hidden; background-color: white;
+     border-top: 1px solid var(--border-color);
+     /* Sem transições */
+}
+.content-section-body { max-height: none; padding: 12px; overflow: visible; }
+.collapsible-content.active, .accordion-content.active {
+      max-height: 5000px; /* Mantido alto para acomodar texto longo */
+      padding: 12px;
+       /* Abertura instantânea */
+  }
+.section-arrow, .accordion-arrow { display: inline-block; /* Sem transição */ }
+.section-arrow.rotated, .accordion-arrow.rotated { transform: rotate(180deg); }
+
+/* --- Feedback e Quiz Simplificados --- */
+#feedback-area, #pda-quiz-results, #had-quiz-results {
+    border: 1px solid #bfdbfe; margin-top: 15px; padding: 12px; background-color: #eff6ff; border-radius: 3px;
+}
+#feedback-area h3 { color: var(--primary-hover); }
+#feedback-content ul { padding-left: 18px; }
+#feedback-content li { margin-bottom: 6px; }
+.quiz-option-button { width: 98%; margin-bottom: 6px; text-align: left; }
+.quiz-option-button.correct { background-color: #dcfce7 !important; border-color: #4ade80 !important; color: #166534 !important; font-weight: bold !important; }
+.quiz-option-button.incorrect { background-color: #fee2e2 !important; border-color: #f87171 !important; color: #991b1b !important; }
+#quiz-feedback, #pda-quiz-feedback { margin-top: 12px; padding: 8px; border-radius: 3px; font-size: 0.9em; border: 1px solid; }
+#quiz-feedback.correct, #pda-quiz-feedback.correct { background-color: #e0f2fe; color: #075985; border-color: #7dd3fc; }
+#quiz-feedback.incorrect, #pda-quiz-feedback.incorrect { background-color: #fff1f2; color: #be123c; border-color: #fda4af; }
+
+/* --- Itens Específicos Simplificados --- */
+/* Respiração: Animação removida */
+.breathing-instructions { text-align: center; margin-bottom: 15px; font-size: 0.9em; }
+.hyperfocus-button { padding: 5px 7px; font-size: 0.85em; text-align: center; }
+#hyperfocus-display { padding: 8px; background-color: white; border-radius: 3px; min-height: 60px; margin-bottom: 12px; border: 1px solid var(--warning-color); font-size: 0.9em; color: var(--text-dark); }
+.stretch-info { border: 1px dashed var(--text-light); padding: 8px; margin-bottom: 8px; text-align: center; font-size: 0.85em; }
+.stretch-info p { margin-bottom: 4px; }
+.stretch-info strong { color: var(--secondary-color); }
+
+/* Abas de Aprendizagem e Estratégias */
+#tab-learn-autism, #tab-learn-topics, #tab-learn-social, #tab-strategies, #tab-pda-quiz, #tab-had-quiz { background-color: #f0f9ff; border-color: #bae6fd; }
+.content-section h3, .accordion-button { background-color: #e0f2fe; color: #0369a1; border-bottom-color: #bae6fd; }
+.content-section h3 { background-color: var(--tertiary-color); color: white; cursor: default; }
+.accordion-button:hover { background-color: #cffafe; }
+.content-section-body, .accordion-content { background-color: var(--light-bg); }
+.link-interno { color: var(--primary-color); text-decoration: underline; font-weight: bold; cursor: pointer; }
+.link-interno:hover { color: var(--primary-hover); }
+.highlight-section { background-color: #fef9c3 !important; /* Sem transição */}
+
+/* --- Aba PDA Quiz Específica --- */
+#tab-pda-quiz { background-color: var(--pda-quiz-bg); border-color: var(--pda-quiz-border); }
+#pda-quiz-container .question-block { background-color: white; border-color: #fef08a; }
+#pda-quiz-container label.block-label { color: var(--pda-quiz-text); }
+#pda-quiz-results { background-color: white; border: 1px solid var(--pda-quiz-border); }
+#pda-quiz-results h4 { color: var(--pda-quiz-text); font-size: 1.1em; font-weight: bold; }
+.pda-disclaimer { background-color: #fefce8; border: 1px solid #fef08a; color: #a16207; padding: 8px; border-radius: 3px; margin-bottom: 12px; font-size: 0.85em; }
+.pda-disclaimer strong { color: #854d0e; font-weight: bold; }
+.pda-quiz-option-button { border-color: #eab308; color: #713f12; }
+.pda-quiz-option-button:hover { background-color: #fef9c3; }
+.pda-quiz-option-button.selected { background-color: #eab308 !important; color: white !important; border-color: #ca8a04 !important; }
+
+ /* --- Aba HAD Quiz Específica --- */
+#tab-had-quiz { background-color: var(--had-quiz-bg); border-color: var(--had-quiz-border); } /* Reutilizando cores */
+#had-quiz-container .question-block { background-color: white; border-color: #bfdbfe; } /* Borda azul clara */
+#had-quiz-container label.block-label { color: var(--had-quiz-text); } /* Texto azul */
+#had-quiz-results { background-color: white; border: 1px solid var(--had-quiz-border); }
+#had-quiz-results h4 { color: var(--had-quiz-text); font-size: 1.1em; font-weight: bold; }
+.had-disclaimer { background-color: #e0f2fe; border: 1px solid #bae6fd; color: #0369a1; padding: 8px; border-radius: 3px; margin-bottom: 12px; font-size: 0.85em; }
+.had-disclaimer strong { color: #075985; font-weight: bold; }
+.had-quiz-option-button { border-color: #7dd3fc; color: #0c4a6e; } /* Tom azul */
+.had-quiz-option-button:hover { background-color: #e0f2fe; }
+.had-quiz-option-button.selected { background-color: #38bdf8 !important; color: white !important; border-color: #0ea5e9 !important; }
+
+/* Aba Inspiração */
+#tab-inspiration { background-color: #fffbeb; border-color: #fef3c7; }
+#tab-inspiration h2 { color: var(--inspiration-color); }
+/* Estilo específico para os títulos dos casos */
+#tab-inspiration .content-section h3 {
+    background-color: #fef3c7; /* Amarelo claro */
+    color: #b45309; /* Marrom/Laranja escuro */
+    border-bottom-color: #fef08a; /* Amarelo um pouco mais escuro */
+    cursor: default; /* Mantém o cursor padrão */
+}
+#tab-inspiration .content-section-body { background-color: var(--light-bg); }
+#tab-inspiration .case-study-source { font-size: 0.8em; color: var(--text-light); margin-top: 10px; text-align: right; }
+
+
+/* Classes Utilitárias Mínimas */
+.hidden { display: none !important; }
+.text-red { color: var(--danger-color); }
+.text-yellow { color: var(--warning-color); }
+.text-green { color: var(--success-color); }
+.font-semibold { font-weight: bold; }
+.mb-3 { margin-bottom: 0.8em; } /* Ajustado */
+.mt-8 { margin-top: 20px; } /* Ajustado */
